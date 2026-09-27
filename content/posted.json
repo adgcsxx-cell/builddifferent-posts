@@ -1,4 +1,23 @@
 [
- {"id": "01-stop-loss-calm", "date": "2026-09-27", "dir": "manual", "slides": 1, "result": "published manually"},
- {"id": "02-backtest-shows-what-fails", "date": "2026-09-27", "dir": "manual", "slides": 1, "result": "published manually"}
+ {
+  "id": "01-stop-loss-calm",
+  "date": "2026-09-27",
+  "dir": "manual",
+  "slides": 1,
+  "result": "published manually"
+ },
+ {
+  "id": "02-backtest-shows-what-fails",
+  "date": "2026-09-27",
+  "dir": "manual",
+  "slides": 1,
+  "result": "published manually"
+ },
+ {
+  "id": "03-drawdown-recovery",
+  "date": "2026-09-27",
+  "dir": "posts/2026-09-27-03-drawdown-recovery",
+  "slides": 5,
+  "result": "https://www.instagram.com/p/DdzAKAvDIH_/"
+ }
 ]
