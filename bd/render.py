@@ -17,6 +17,12 @@ W1, H1 = 1080, 1350        # final size
 W, H = W1 * S, H1 * S
 M = 96                     # side margin (1x units)
 
+# The reel animator renders chart slides twice: once as usual and once with SHOW_DATA = False
+# (axes, grid, legend and labels only), then wipes the data in. GEOM holds what it needs to know
+# about the last chart drawn, in final (1x) pixels.
+SHOW_DATA = True
+GEOM = {}
+
 
 def p(v):
     """1x units -> canvas pixels."""
@@ -297,17 +303,18 @@ def slide_cover(spec, ctx):
         fs = font("regular", 36)
         sub_lines = wrap_tokens(d, rich_tokens(spec["sub"]), fs, p(W1 - 2 * M))
         draw_lines(d, p(M), y, sub_lines, fs, p(52), color=INK2)
-    # swipe cue
+    # swipe cue (the reel renderer passes cue="" because a reel is watched, not swiped)
     cue = spec.get("cue", "Swipe")
-    fc = font("medium", 28)
-    cw = d.textlength(cue, font=fc)
-    cx = p(W1 - M) - cw - p(56)
-    cy = p(H1 - 262)
-    d.text((cx, cy), cue, font=fc, fill=AMBER)
-    ax = cx + cw + p(16)
-    ay = cy + p(22)
-    d.line([(ax, ay), (ax + p(36), ay)], fill=AMBER, width=p(4))
-    d.polygon([(ax + p(40), ay), (ax + p(26), ay - p(10)), (ax + p(26), ay + p(10))], fill=AMBER)
+    if cue:
+        fc = font("medium", 28)
+        cw = d.textlength(cue, font=fc)
+        cx = p(W1 - M) - cw - p(56)
+        cy = p(H1 - 262)
+        d.text((cx, cy), cue, font=fc, fill=AMBER)
+        ax = cx + cw + p(16)
+        ay = cy + p(22)
+        d.line([(ax, ay), (ax + p(36), ay)], fill=AMBER, width=p(4))
+        d.polygon([(ax + p(40), ay), (ax + p(26), ay - p(10)), (ax + p(26), ay + p(10))], fill=AMBER)
     footer(d, ctx["idx"], ctx["total"])
     return img
 
@@ -799,7 +806,9 @@ def chart_line(d, img, spec, box):
             colors.append(grays[gi % len(grays)])
             gi += 1
     order = sorted(range(len(series)), key=lambda k: 1 if series[k].get("focus") else 0)
-    for k in order:
+    GEOM.clear()
+    GEOM.update(kind="line", plot=(pl / S, pt / S, pr / S, pb / S))
+    for k in (order if SHOW_DATA else []):
         s = series[k]
         pts = [(X(x), Y(v)) for x, v in zip(xs, s["values"]) if v is not None]
         if s.get("focus") and spec.get("area", True):
@@ -819,7 +828,7 @@ def chart_line(d, img, spec, box):
             # direct label in a text colour (never the series colour), right of the end point
             d.text((ex + p(22), ey - p(17)), s["end_label"], font=fe, fill=INK if s.get("focus") else INK2)
     # point annotations
-    for a in spec.get("points", []):
+    for a in (spec.get("points", []) if SHOW_DATA else []):
         s = series[a.get("series", 0)]
         xi = xs.index(a["x"]) if a["x"] in xs else min(range(len(xs)), key=lambda i: abs(xs[i] - a["x"]))
         px_, py_ = X(xs[xi]), Y(s["values"][xi])
@@ -880,6 +889,8 @@ def chart_bar(d, img, spec, box):
     slot = (pr - pl) / n
     bw = min(slot * spec.get("bar_ratio", 0.56), p(96))
     base = Y(0)
+    GEOM.clear()
+    GEOM.update(kind="bar", base=base / S, plot=(pl / S, pt / S, pr / S, pb / S))
     fv = font("bold", 28 if n <= 8 else 22)
     every = spec.get("label_every", 1)
     for i, (c, v) in enumerate(zip(cats, vals)):
@@ -887,13 +898,13 @@ def chart_bar(d, img, spec, box):
         col = AMBER if (i in hl or not hl) else GRAY2
         top = Y(v)
         rad = min(p(10), int(bw / 2))
-        if v >= 0:
+        if SHOW_DATA and v >= 0:
             d.rounded_rectangle([cx - bw / 2, top, cx + bw / 2, base], radius=rad, fill=col,
                                 corners=(True, True, False, False))
-        else:
+        elif SHOW_DATA:
             d.rounded_rectangle([cx - bw / 2, base, cx + bw / 2, top], radius=rad, fill=col,
                                 corners=(False, False, True, True))
-        if label_all or i in hl:
+        if SHOW_DATA and (label_all or i in hl):
             lab = fmt(v, spec.get("value_format", "{:g}"))
             lw = d.textlength(lab, font=fv)
             ly = top - p(44) if v >= 0 else top + p(10)
@@ -935,7 +946,9 @@ def chart_candles(d, img, spec, box):
 
     slot = (pr - pl) / n
     bw = slot * 0.62
-    for i, (o, h, l, c) in enumerate(ohlc):
+    GEOM.clear()
+    GEOM.update(kind="candles", plot=(pl / S, pt / S, pr / S, pb / S))
+    for i, (o, h, l, c) in enumerate(ohlc if SHOW_DATA else []):
         cx = pl + slot * (i + 0.5)
         up = c >= o
         col = AMBER if up else GRAY1

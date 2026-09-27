@@ -8,6 +8,9 @@
   python3 build.py mark <id> --date D --dir DIR [--result TEXT]   Record a published post
   python3 build.py status                     How many posts are left in the queue
   python3 build.py check                      Validate every post in the library
+  python3 build.py reel [--id ID] [--date D]  Make a Reel (reel.mp4) from a published carousel
+                                              (default: the oldest one posted before today with no reel)
+  python3 build.py mark-reel <id> --date D --file F [--result TEXT]   Record a published Reel
 """
 import argparse
 import datetime as dt
@@ -23,6 +26,7 @@ from bd import render  # noqa: E402
 
 LIB = os.path.join(HERE, "content", "library.json")
 POSTED = os.path.join(HERE, "content", "posted.json")
+REELS = os.path.join(HERE, "content", "reels.json")
 CONFIG = os.path.join(HERE, "content", "config.json")
 
 TYPES = set(render.SLIDES)
@@ -220,11 +224,56 @@ def cmd_mark(a):
     return 0
 
 
+def reel_candidate(today, reels, posted, want_id=None):
+    """The published carousel to turn into a Reel: `want_id`, else the oldest one posted before today
+    that has no Reel yet (older lessons resurface, and a Reel never sits next to its own carousel)."""
+    have = {r["id"] for r in reels}
+    pool = [p for p in posted if p.get("dir") not in (None, "", "manual")]
+    if want_id:
+        return next((p for p in pool if p["id"] == want_id), None)
+    return next((p for p in pool if p["id"] not in have and p["date"] < today), None)
+
+
+def cmd_reel(a):
+    from bd import reel
+    today = a.date or ist_today()
+    reels = load(REELS, [])
+    if not a.force and any(r["date"] == today for r in reels):
+        print(json.dumps({"error": f"a Reel is already recorded for {today}; not making another"}))
+        return 5
+    entry = reel_candidate(today, reels, load(POSTED, []), a.id)
+    if entry is None:
+        print(json.dumps({"error": "no published carousel is waiting for a Reel" if not a.id
+                          else f"{a.id} is not a published carousel"}))
+        return 2
+    lib = {p["id"]: p for p in load(LIB, {"posts": []})["posts"]}
+    post = lib[entry["id"]]
+    path, secs = reel.make_reel(post, os.path.join(HERE, entry["dir"], "reel.mp4"))
+    problems = reel.check_specs(path)
+    rel = os.path.relpath(path, HERE)
+    print(json.dumps({"id": post["id"], "file": rel, "url": urls_for([rel])[0], "seconds": round(secs, 1),
+                      "mb": round(os.path.getsize(path) / 1e6, 2), "problems": problems,
+                      "caption": render.caption_text(post)}, ensure_ascii=False, indent=1))
+    return 4 if problems else 0
+
+
+def cmd_mark_reel(a):
+    reels = load(REELS, [])
+    reels.append({"id": a.id, "date": a.date, "file": a.file, "result": a.result or "published"})
+    save(REELS, reels)
+    print(f"recorded Reel {a.id} for {a.date}")
+    return 0
+
+
 def cmd_status(_):
     lib = load(LIB, {"posts": []})
-    done = {p["id"] for p in load(POSTED, [])}
+    posted = load(POSTED, [])
+    done = {p["id"] for p in posted}
     left = [p["id"] for p in lib["posts"] if p["id"] not in done]
-    print(json.dumps({"posted": len(done), "remaining": len(left), "next": left[:3]}, indent=1))
+    reels = load(REELS, [])
+    nxt = reel_candidate(ist_today(), reels, posted)
+    print(json.dumps({"posted": len(done), "remaining": len(left), "next": left[:3],
+                      "reels_posted": len(reels), "next_reel": nxt["id"] if nxt else None}, indent=1))
     return 0
 
 
@@ -247,9 +296,19 @@ def main():
     s.add_argument("--result")
     sub.add_parser("status")
     sub.add_parser("check")
+    s = sub.add_parser("reel")
+    s.add_argument("--id")
+    s.add_argument("--date")
+    s.add_argument("--force", action="store_true", help="make one even if a Reel is recorded for today")
+    s = sub.add_parser("mark-reel")
+    s.add_argument("id")
+    s.add_argument("--date", required=True)
+    s.add_argument("--file", required=True)
+    s.add_argument("--result")
     a = ap.parse_args()
     return {"next": cmd_next, "render": cmd_render, "sheet": cmd_sheet, "urls": cmd_urls, "mark": cmd_mark,
-            "status": cmd_status, "check": cmd_check}[a.cmd](a)
+            "status": cmd_status, "check": cmd_check, "reel": cmd_reel,
+            "mark-reel": cmd_mark_reel}[a.cmd](a)
 
 
 if __name__ == "__main__":
