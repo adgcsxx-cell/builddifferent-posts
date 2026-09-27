@@ -1,0 +1,15 @@
+A 50% loss needs a 100% gain to recover. That's not opinion, it's arithmetic.
+
+When you lose, the next gain is calculated on a smaller base. So the deeper the hole, the steeper the climb:
+→ −10% needs +11%
+→ −30% needs +43%
+→ −50% needs +100%
+→ −70% needs +233%
+
+This is why professional traders obsess over the downside first. Small, controlled losses are easy to repair. One big loss can undo years of good work.
+
+Save this for the next time you're tempted to skip a stop-loss.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#riskmanagement #tradingpsychology #stockmarketindia #tradingeducation #optionstrading
