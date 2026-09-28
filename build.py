@@ -8,8 +8,10 @@
   python3 build.py mark <id> --date D --dir DIR [--result TEXT]   Record a published post
   python3 build.py status                     How many posts are left in the queue
   python3 build.py check                      Validate every post in the library
-  python3 build.py reel [--id ID] [--date D]  Make a Reel (reel.mp4) from a published carousel
-                                              (default: the oldest one posted before today with no reel)
+  python3 build.py reel [--id ID] [--date D]  Make today's Reel (reels/<date>-<id>.mp4) from a lesson's reel script:
+                                              part 2 of the last Reel's pair if one is due, else the oldest
+                                              carousel posted before today that has no Reel yet
+  python3 build.py reel-preview <id>           Still frames of a lesson's Reel for review (preview/reel-<id>/)
   python3 build.py mark-reel <id> --date D --file F [--result TEXT]   Record a published Reel
 """
 import argparse
@@ -125,8 +127,9 @@ def cmd_check(_):
     lib = load(LIB, {"posts": []})
     ids = set()
     bad = 0
+    by_id = {p["id"]: p for p in lib["posts"]}
     for post in lib["posts"]:
-        errs = validate(post)
+        errs = validate(post) + validate_reel(post, by_id)
         if post["id"] in ids:
             errs.append("duplicate id")
         ids.add(post["id"])
@@ -224,37 +227,118 @@ def cmd_mark(a):
     return 0
 
 
-def reel_candidate(today, reels, posted, want_id=None):
-    """The published carousel to turn into a Reel: `want_id`, else the oldest one posted before today
-    that has no Reel yet (older lessons resurface, and a Reel never sits next to its own carousel)."""
+def reel_candidate(today, reels, posted, lib, want_id=None):
+    """Which lesson gets today's Reel.
+    1. `want_id` if given.
+    2. Part 2 of a pair: if the last Reel's script names a `next` lesson that has no Reel yet.
+    3. Otherwise the oldest carousel posted before today that has no Reel yet."""
     have = {r["id"] for r in reels}
-    pool = [p for p in posted if p.get("dir") not in (None, "", "manual")]
     if want_id:
-        return next((p for p in pool if p["id"] == want_id), None)
-    return next((p for p in pool if p["id"] not in have and p["date"] < today), None)
+        return want_id if want_id in lib else None
+    if reels:
+        nxt = lib.get(reels[-1]["id"], {}).get("reel", {}).get("next")
+        if nxt and nxt not in have and nxt in lib:
+            return nxt
+    for p in posted:
+        if p.get("dir") not in (None, "", "manual") and p["date"] < today and p["id"] not in have:
+            return p["id"]
+    return None
+
+
+def reel_caption(post, lib):
+    r = post.get("reel", {})
+    extra = ""
+    if r.get("part") == 1 and r.get("next_title"):
+        extra = f"Part 1 of 2. Part 2 is next: {r['next_title'].rstrip('.')}. Follow so you don't miss it."
+    elif r.get("part") == 2 and r.get("prev") in lib and lib[r["prev"]].get("reel"):
+        extra = "Part 2 of 2. Missed part 1? It's on the profile: " + lib[r["prev"]]["reel"]["hook"].replace("**", "")
+    return render.caption_text(dict(post, caption=post["caption"].strip() + ("\n\n" + extra if extra else "")))
+
+
+def validate_reel(post, lib):
+    """Problems with a lesson's reel script (empty list = fine)."""
+    r = post.get("reel")
+    if not r:
+        return []
+    errs = []
+    if not isinstance(r.get("hook"), str) or len(r["hook"].replace("**", "").split()) > 16:
+        errs.append("reel: hook missing or longer than 16 words")
+    cs = r.get("chart_slide")
+    if cs and not (1 <= cs <= len(post["slides"]) and post["slides"][cs - 1]["type"] == "chart"):
+        errs.append("reel: chart_slide must point at a chart slide")
+    scenes = r.get("scenes", [])
+    if not 1 <= len(scenes) <= 2:
+        errs.append("reel: needs 1 or 2 scenes after the hook")
+    texts = [r.get("hook", ""), r.get("kicker", ""), r.get("next_title", "")]
+    for sc in scenes:
+        texts += [sc.get("kicker", "")] + sc.get("lines", [])
+        big = sc.get("big", [])
+        texts += big if isinstance(big, list) else [big]
+        if "lines" in sc and not 2 <= len(sc["lines"]) <= 4:
+            errs.append("reel: a lines scene needs 2-4 lines")
+        if any(len(t.replace("**", "")) > 34 for t in sc.get("lines", [])):
+            errs.append("reel: keep each line to 34 characters or fewer")
+    if r.get("part") == 1 and not (r.get("next") in lib and r.get("next_title")):
+        errs.append("reel: part 1 needs `next` (a lesson id) and `next_title`")
+    if r.get("next") in lib and not lib[r["next"]].get("reel"):
+        errs.append(f"reel: part 2 ({r['next']}) has no reel script yet")
+    for t in texts:
+        bad = sorted({c for c in t if not supported(c)})
+        if bad:
+            errs.append(f"reel: characters not in the font: {' '.join(bad)}")
+    if not errs:
+        from bd import short
+        _, total = short.plan(post)
+        if not 11 <= total <= 18.5:
+            errs.append(f"reel: {total:.1f} s long; aim for 12-18 s (shorten or add text)")
+    return errs
 
 
 def cmd_reel(a):
-    from bd import reel
+    from bd import reel, short
     today = a.date or ist_today()
     reels = load(REELS, [])
     if not a.force and any(r["date"] == today for r in reels):
         print(json.dumps({"error": f"a Reel is already recorded for {today}; not making another"}))
         return 5
-    entry = reel_candidate(today, reels, load(POSTED, []), a.id)
-    if entry is None:
-        print(json.dumps({"error": "no published carousel is waiting for a Reel" if not a.id
-                          else f"{a.id} is not a published carousel"}))
-        return 2
     lib = {p["id"]: p for p in load(LIB, {"posts": []})["posts"]}
-    post = lib[entry["id"]]
-    path, secs = reel.make_reel(post, os.path.join(HERE, entry["dir"], "reel.mp4"))
+    pid = reel_candidate(today, reels, load(POSTED, []), lib, a.id)
+    if pid is None:
+        print(json.dumps({"error": "no lesson is waiting for a Reel" if not a.id else f"unknown lesson {a.id}"}))
+        return 2
+    post = lib[pid]
+    if not post.get("reel"):
+        print(json.dumps({"error": f"{pid} has no reel script: write one (content/SCHEMA.md, 'Reel scripts'), "
+                                   "run python3 build.py check, then run this again", "id": pid}))
+        return 6
+    errs = validate_reel(post, lib)
+    if errs:
+        print(json.dumps({"error": "reel script problems", "id": pid, "problems": errs}, ensure_ascii=False))
+        return 3
+    out = os.path.join(HERE, "reels", f"{today}-{pid}.mp4")
+    path, secs = short.make_short(post, out)
     problems = reel.check_specs(path)
     rel = os.path.relpath(path, HERE)
-    print(json.dumps({"id": post["id"], "file": rel, "url": urls_for([rel])[0], "seconds": round(secs, 1),
-                      "mb": round(os.path.getsize(path) / 1e6, 2), "problems": problems,
-                      "caption": render.caption_text(post)}, ensure_ascii=False, indent=1))
+    print(json.dumps({"id": pid, "part": post["reel"].get("part"), "file": rel, "url": urls_for([rel])[0],
+                      "seconds": round(secs, 1), "mb": round(os.path.getsize(path) / 1e6, 2),
+                      "problems": problems, "caption": reel_caption(post, lib)}, ensure_ascii=False, indent=1))
     return 4 if problems else 0
+
+
+def cmd_reel_preview(a):
+    from bd import short
+    lib = {p["id"]: p for p in load(LIB, {"posts": []})["posts"]}
+    post = lib.get(a.id)
+    if not post or not post.get("reel"):
+        print("no reel script for", a.id)
+        return 1
+    scenes = short.build_scenes(post, post["reel"])
+    starts, total = short.timeline(scenes)
+    times = [0.0, 0.7, starts[0] + scenes[0].duration - 0.5]
+    times += [st + sc.duration - 0.6 for st, sc in zip(starts[1:], scenes[1:])]
+    for pth in short.preview(post, times, os.path.join(HERE, "preview", f"reel-{a.id}")):
+        print(pth)
+    return 0
 
 
 def cmd_mark_reel(a):
@@ -271,9 +355,13 @@ def cmd_status(_):
     done = {p["id"] for p in posted}
     left = [p["id"] for p in lib["posts"] if p["id"] not in done]
     reels = load(REELS, [])
-    nxt = reel_candidate(ist_today(), reels, posted)
+    lib_by_id = {p["id"]: p for p in lib["posts"]}
+    nxt = reel_candidate(ist_today(), reels, posted, lib_by_id)
+    scripted = [p["id"] for p in lib["posts"] if p.get("reel") and p["id"] not in {r["id"] for r in reels}]
     print(json.dumps({"posted": len(done), "remaining": len(left), "next": left[:3],
-                      "reels_posted": len(reels), "next_reel": nxt["id"] if nxt else None}, indent=1))
+                      "reels_posted": len(reels), "next_reel": nxt,
+                      "next_reel_has_script": bool(nxt and lib_by_id[nxt].get("reel")),
+                      "unused_reel_scripts": len(scripted)}, indent=1))
     return 0
 
 
@@ -300,6 +388,8 @@ def main():
     s.add_argument("--id")
     s.add_argument("--date")
     s.add_argument("--force", action="store_true", help="make one even if a Reel is recorded for today")
+    s = sub.add_parser("reel-preview")
+    s.add_argument("id")
     s = sub.add_parser("mark-reel")
     s.add_argument("id")
     s.add_argument("--date", required=True)
@@ -307,7 +397,7 @@ def main():
     s.add_argument("--result")
     a = ap.parse_args()
     return {"next": cmd_next, "render": cmd_render, "sheet": cmd_sheet, "urls": cmd_urls, "mark": cmd_mark,
-            "status": cmd_status, "check": cmd_check, "reel": cmd_reel,
+            "status": cmd_status, "check": cmd_check, "reel": cmd_reel, "reel-preview": cmd_reel_preview,
             "mark-reel": cmd_mark_reel}[a.cmd](a)
 
 

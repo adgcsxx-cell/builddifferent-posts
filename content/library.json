@@ -72,7 +72,32 @@
     "#stockmarketindia",
     "#tradingeducation",
     "#optionstrading"
-   ]
+   ],
+   "reel": {
+    "kicker": "Risk math · Part 1",
+    "hook": "Lose **50%** and you need **+100%** just to get back to zero.",
+    "chart_slide": 2,
+    "scenes": [
+     {
+      "kicker": "Why?",
+      "lines": [
+       "Start with ₹1,00,000",
+       "Lose 50%: now **₹50,000**",
+       "Make 50%: only **₹75,000**",
+       "Back to ₹1,00,000 needs **+100%**"
+      ]
+     },
+     {
+      "big": [
+       "Small losses are cheap to fix.",
+       "Big losses can take **years**."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "07-risk-per-trade",
+    "next_title": "How much to risk on one trade"
+   }
   },
   {
    "id": "04-what-is-a-system",
@@ -598,7 +623,29 @@
     "#tradingpsychology",
     "#stockmarketindia",
     "#optionstrading"
-   ]
+   ],
+   "reel": {
+    "kicker": "Position sizing · Part 2",
+    "hook": "The same 10 losses can cost you **9.6%** or **40%**.",
+    "chart_slide": 2,
+    "scenes": [
+     {
+      "kicker": "Losses in a row to lose 20%",
+      "lines": [
+       "Risk 1% per trade: **23**",
+       "Risk 2% per trade: **12**",
+       "Risk 5% per trade: only **5**"
+      ]
+     },
+     {
+      "big": [
+       "Size so your worst streak is **survivable**."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "03-drawdown-recovery"
+   }
   },
   {
    "id": "08-sample-size",

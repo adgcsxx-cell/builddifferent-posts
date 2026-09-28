@@ -20,8 +20,9 @@ M = 96                     # side margin (1x units)
 # The reel animator renders chart slides twice: once as usual and once with SHOW_DATA = False
 # (axes, grid, legend and labels only), then wipes the data in. GEOM holds what it needs to know
 # about the last chart drawn, in final (1x) pixels.
-SHOW_DATA = True
+SHOW_DATA = True           # True: normal. False: no data marks. "ghost": data marks in GHOST, no labels
 GEOM = {}
+GHOST = (50, 59, 73)
 
 
 def p(v):
@@ -806,11 +807,15 @@ def chart_line(d, img, spec, box):
             colors.append(grays[gi % len(grays)])
             gi += 1
     order = sorted(range(len(series)), key=lambda k: 1 if series[k].get("focus") else 0)
+    full, ghost = SHOW_DATA is True, SHOW_DATA == "ghost"
     GEOM.clear()
-    GEOM.update(kind="line", plot=(pl / S, pt / S, pr / S, pb / S))
-    for k in (order if SHOW_DATA else []):
+    GEOM.update(kind="line", plot=(pl / S, pt / S, pr / S, pb / S), points=[])
+    for k in (order if (full or ghost) else []):
         s = series[k]
         pts = [(X(x), Y(v)) for x, v in zip(xs, s["values"]) if v is not None]
+        if ghost:
+            d.line(pts, fill=GHOST, width=p(5), joint="curve")
+            continue
         if s.get("focus") and spec.get("area", True):
             base = Y(max(y_lo, min(y_hi, spec.get("area_base", y_lo))))
             layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
@@ -828,10 +833,13 @@ def chart_line(d, img, spec, box):
             # direct label in a text colour (never the series colour), right of the end point
             d.text((ex + p(22), ey - p(17)), s["end_label"], font=fe, fill=INK if s.get("focus") else INK2)
     # point annotations
-    for a in (spec.get("points", []) if SHOW_DATA else []):
+    for a in spec.get("points", []):
         s = series[a.get("series", 0)]
         xi = xs.index(a["x"]) if a["x"] in xs else min(range(len(xs)), key=lambda i: abs(xs[i] - a["x"]))
         px_, py_ = X(xs[xi]), Y(s["values"][xi])
+        GEOM["points"].append((px_ / S, py_ / S))
+        if not full:
+            continue
         r, ring = p(10), p(4)
         col = colors[a.get("series", 0)]
         d.ellipse([px_ - r - ring, py_ - r - ring, px_ + r + ring, py_ + r + ring], fill=PANEL)
@@ -889,22 +897,24 @@ def chart_bar(d, img, spec, box):
     slot = (pr - pl) / n
     bw = min(slot * spec.get("bar_ratio", 0.56), p(96))
     base = Y(0)
+    full, ghost = SHOW_DATA is True, SHOW_DATA == "ghost"
     GEOM.clear()
-    GEOM.update(kind="bar", base=base / S, plot=(pl / S, pt / S, pr / S, pb / S))
+    GEOM.update(kind="bar", base=base / S, plot=(pl / S, pt / S, pr / S, pb / S), bars=[], hl=sorted(hl))
     fv = font("bold", 28 if n <= 8 else 22)
     every = spec.get("label_every", 1)
     for i, (c, v) in enumerate(zip(cats, vals)):
         cx = pl + slot * (i + 0.5)
-        col = AMBER if (i in hl or not hl) else GRAY2
+        col = (AMBER if (i in hl or not hl) else GRAY2) if full else GHOST
         top = Y(v)
-        rad = min(p(10), int(bw / 2))
-        if SHOW_DATA and v >= 0:
+        GEOM["bars"].append((cx / S, top / S, bw / S))
+        rad = min(p(10), int(bw / 2), int(abs(base - top) / 2))   # short bars: smaller corners
+        if (full or ghost) and v >= 0:
             d.rounded_rectangle([cx - bw / 2, top, cx + bw / 2, base], radius=rad, fill=col,
                                 corners=(True, True, False, False))
-        elif SHOW_DATA:
+        elif full or ghost:
             d.rounded_rectangle([cx - bw / 2, base, cx + bw / 2, top], radius=rad, fill=col,
                                 corners=(False, False, True, True))
-        if SHOW_DATA and (label_all or i in hl):
+        if full and (label_all or i in hl):
             lab = fmt(v, spec.get("value_format", "{:g}"))
             lw = d.textlength(lab, font=fv)
             ly = top - p(44) if v >= 0 else top + p(10)
@@ -948,10 +958,10 @@ def chart_candles(d, img, spec, box):
     bw = slot * 0.62
     GEOM.clear()
     GEOM.update(kind="candles", plot=(pl / S, pt / S, pr / S, pb / S))
-    for i, (o, h, l, c) in enumerate(ohlc if SHOW_DATA else []):
+    for i, (o, h, l, c) in enumerate(ohlc if (SHOW_DATA is True or SHOW_DATA == "ghost") else []):
         cx = pl + slot * (i + 0.5)
         up = c >= o
-        col = AMBER if up else GRAY1
+        col = (AMBER if up else GRAY1) if SHOW_DATA is True else GHOST
         d.line([(cx, Y(h)), (cx, Y(l))], fill=col, width=p(3))
         top, bot = Y(max(o, c)), Y(min(o, c))
         if bot - top < p(3):
