@@ -659,7 +659,17 @@ def slide_windows(spec, ctx):
 
 
 def slide_cta(spec, ctx):
-    img = background(glow=True, curve_seed=ctx["seed"] + 1)
+    # Pass 1 measures where the disclaimer ends; pass 2 keeps the decorative curve below it.
+    probe = background(glow=True)
+    text_bottom = _cta_draw(probe, spec, ctx)
+    y_base = H1 - 170
+    amp = max(40, min(280, y_base - (text_bottom / S + 40)))
+    img = _decor_curve(background(glow=True), ctx["seed"] + 1, y_base=y_base, amp=amp)
+    _cta_draw(img, spec, ctx)
+    return img
+
+
+def _cta_draw(img, spec, ctx):
     d = ImageDraw.Draw(img)
     header(d, ctx["label"])
     title = spec.get("title", "Found this useful?")
@@ -688,9 +698,9 @@ def slide_cta(spec, ctx):
                                   "do your own research.")
     fd = font("regular", 23)
     dl = wrap_tokens(d, rich_tokens(disc), fd, p(W1 - 2 * M))
-    draw_lines(d, p(M), y, dl, fd, p(34), color=MUTED)
+    bottom = draw_lines(d, p(M), y, dl, fd, p(34), color=MUTED)
     footer(d, ctx["idx"], ctx["total"], note=None)
-    return img
+    return bottom
 
 
 # ------------------------------------------------------------ charts --------
