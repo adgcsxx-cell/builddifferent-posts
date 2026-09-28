@@ -265,19 +265,22 @@ def _centre(layers, gaps):
 def hook_scene(post, script):
     kick = kicker_layer(script.get("kicker", post.get("pillar", "")), MX, TOP)
     chart = None
-    if script.get("chart_slide"):
+    spec, note = script.get("chart"), script.get("chart_note")
+    if not spec and script.get("chart_slide"):
         sp = post["slides"][script["chart_slide"] - 1]
+        spec, note = sp["chart"], sp.get("note")
+    if spec:
         hook, size = text_layer(script["hook"], "bold", [100, 94, 88, 82, 76, 70, 64], CW, 420,
                                 MX, TOP + 56, lh_mult=1.1)
         py = hook.bottom + 34
         ph = min(640, BOTTOM - 44 - py)
-        chart = ChartPanel(sp["chart"], sp.get("note"), MX - 12, py, FW - 2 * (MX - 12), ph)
+        chart = ChartPanel(spec, note, MX - 12, py, FW - 2 * (MX - 12), ph)
         dur = snap(1.0 + 0.2 * words(script["hook"]) + chart.emph_at + 0.6, minimum=7)
     else:
         hook, size = text_layer(script["hook"], "bold", [128, 120, 112, 104, 96, 88], CW, 820,
                                 MX, TOP + 56, lh_mult=1.1)
         _centre([kick, hook], [0, 26])
-        dur = snap(1.6 + 0.3 * words(script["hook"]), minimum=5)
+        dur = snap(1.2 + 0.22 * words(script["hook"]), minimum=5)
     sc = Scene(dur)
     sc.items = [(kick, 0), (hook, 0)] + ([(chart, 0)] if chart else [])
     sc.events = [(0.0, "impact")]

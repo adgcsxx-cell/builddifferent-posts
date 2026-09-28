@@ -885,6 +885,10 @@ def chart_bar(d, img, spec, box):
     pr = x1 - p(4)
     pt = y0 + p(64)
     pb = y1 - p(52) - (p(40) if spec.get("x_label") else 0)
+    # labelled negative bars put their value under the bar, so category labels move down a row
+    neg_lab = any(v < 0 and (label_all or i in hl) for i, v in enumerate(vals))
+    if neg_lab:
+        pb -= p(40)
 
     def Y(v):
         return pb - (v - vmin) / (vmax - vmin) * (pb - pt)
@@ -921,7 +925,8 @@ def chart_bar(d, img, spec, box):
             d.text((cx - lw / 2, ly), lab, font=fv, fill=INK if (i in hl or not hl) else INK2)
         if i % every == 0 or i in hl and spec.get("label_highlight_cats", False):
             cw_ = d.textlength(str(c), font=ft)
-            d.text((cx - cw_ / 2, max(base, Y(vmin)) + p(12)), str(c), font=ft, fill=MUTED)
+            d.text((cx - cw_ / 2, max(base, Y(vmin)) + p(12) + (p(44) if neg_lab else 0)), str(c), font=ft,
+                   fill=MUTED)
     d.line([(pl, base), (pr, base)], fill=(96, 106, 120), width=p(3))
     if spec.get("x_label"):
         fx = font("regular", 24)

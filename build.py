@@ -266,10 +266,17 @@ def validate_reel(post, lib):
     cs = r.get("chart_slide")
     if cs and not (1 <= cs <= len(post["slides"]) and post["slides"][cs - 1]["type"] == "chart"):
         errs.append("reel: chart_slide must point at a chart slide")
+    if r.get("chart"):
+        if r["chart"].get("kind") not in CHART_KINDS:
+            errs.append("reel: unknown chart kind")
+        if not r.get("chart_note"):
+            errs.append("reel: an inline chart needs a chart_note saying what it is (math, simulation, ...)")
     scenes = r.get("scenes", [])
     if not 1 <= len(scenes) <= 2:
         errs.append("reel: needs 1 or 2 scenes after the hook")
-    texts = [r.get("hook", ""), r.get("kicker", ""), r.get("next_title", "")]
+    texts = [r.get("hook", ""), r.get("kicker", ""), r.get("next_title", ""), r.get("chart_note", "")]
+    if r.get("chart"):
+        texts += slide_texts({"chart": r["chart"]})
     for sc in scenes:
         texts += [sc.get("kicker", "")] + sc.get("lines", [])
         big = sc.get("big", [])

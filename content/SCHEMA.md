@@ -57,3 +57,33 @@ paragraph and a line starting with `- ` becomes a bullet.
 
 Chart style rules: one focus series in amber, everything else gray; a legend appears automatically for 2+ series;
 label selectively (end points, the one number that matters), never every point; one y-axis only.
+
+## Reel scripts (`post.reel`)
+
+A Reel is a 12–18 second video with **one idea**, built from a lesson's `reel` script by `bd/short.py`:
+a full-screen hook with the lesson's chart drawing itself in, one or two short text beats, then a follow
+ending. Sound is generated (bd/sound.py), so nothing needs licensing.
+
+```json
+"reel": {
+  "kicker": "Risk math · Part 1",
+  "hook": "Lose **50%** and you need **+100%** just to get back to zero.",
+  "chart_slide": 2,
+  "scenes": [
+    {"kicker": "Why?", "lines": ["Start with ₹1,00,000", "Lose 50%: now **₹50,000**"]},
+    {"big": ["Small losses are cheap to fix.", "Big losses can take **years**."]}
+  ],
+  "part": 1, "next": "07-risk-per-trade", "next_title": "How much to risk on one trade"
+}
+```
+
+- `hook`: at most 16 words, the lesson's strongest claim, with the key numbers in `**amber**`. Usually the cover title.
+- `chart_slide`: 1-based index of the lesson's chart slide to show under the hook (omit for text-only hooks).
+- `scenes`: 1 or 2. A `lines` scene stacks 2–4 short lines (34 characters max each, one fact per line, each gets
+  its own note in the sound); a `big` scene is one or two short takeaway sentences in large type.
+- Pairs: a part 1 names `next` (the lesson id of part 2) and `next_title` (what part 2 answers) and ends with
+  "Follow for part 2". The part 2 lesson needs its own script with `"part": 2, "prev": "<part 1 id>"`; the
+  Reels job publishes it as the very next Reel, so the promise is always kept. Single Reels leave `part` out
+  and end with "Follow for more".
+- Every number must come from the lesson itself (computed in `make_library.py`), and the content rules above apply.
+- `python3 build.py check` validates scripts and their length; `python3 build.py reel-preview <id>` writes stills.

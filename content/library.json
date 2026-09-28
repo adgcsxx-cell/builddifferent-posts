@@ -143,7 +143,30 @@
     "#algotrading",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Systematic trading · Part 1",
+    "hook": "A trading **system** is just four decisions, made **before** the market opens.",
+    "scenes": [
+     {
+      "kicker": "The four decisions",
+      "lines": [
+       "**Setup:** what and when",
+       "**Entry:** the exact trigger",
+       "**Exit:** stop and target",
+       "**Size:** risk per trade"
+      ]
+     },
+     {
+      "big": [
+       "If you can't write it down, you can't **test** it."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "14-expectancy",
+    "next_title": "How to tell if your system pays"
+   }
   },
   {
    "id": "05-call-option-payoff",
@@ -336,7 +359,180 @@
     "#derivatives",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Options basics · Part 1",
+    "hook": "A call option is the **right** to buy, not the obligation.",
+    "chart": {
+     "kind": "line",
+     "title": "Profit or loss per unit",
+     "x": [
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120,
+      121,
+      122,
+      123,
+      124,
+      125,
+      126,
+      127,
+      128,
+      129,
+      130
+     ],
+     "series": [
+      {
+       "name": "Long call",
+       "values": [
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -4.0,
+        -3.0,
+        -2.0,
+        -1.0,
+        0.0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        9.0,
+        10.0,
+        11.0,
+        12.0,
+        13.0,
+        14.0,
+        15.0,
+        16.0,
+        17.0,
+        18.0,
+        19.0,
+        20.0,
+        21.0,
+        22.0,
+        23.0,
+        24.0,
+        25.0
+       ],
+       "focus": true
+      }
+     ],
+     "zero_line": true,
+     "area_base": 0,
+     "y_format": "{:g}",
+     "x_label": "Price at expiry",
+     "x_ticks": [
+      80,
+      90,
+      100,
+      110,
+      120,
+      130
+     ],
+     "vlines": [
+      {
+       "x": 100,
+       "label": "Strike 100",
+       "side": "left"
+      }
+     ],
+     "points": [
+      {
+       "x": 105,
+       "label": "Break-even 105",
+       "dx": 22,
+       "dy": -60
+      },
+      {
+       "x": 88,
+       "label": "Max loss: the premium (−5)",
+       "dx": -10,
+       "dy": -135
+      }
+     ]
+    },
+    "chart_note": "Illustrative numbers. Ignores brokerage and taxes.",
+    "scenes": [
+     {
+      "kicker": "Strike 100, premium 5",
+      "lines": [
+       "Below 100: lose the **5** premium",
+       "At 105: **break even**",
+       "Above 105: profit **grows**"
+      ]
+     },
+     {
+      "big": [
+       "Your worst case is the premium.",
+       "Your enemy is **time**."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "17-put-option-payoff",
+    "next_title": "The put option, its mirror image"
+   }
   },
   {
    "id": "06-process-vs-outcome",
@@ -415,7 +611,31 @@
     "#tradingdiscipline",
     "#systematictrading",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Trading psychology · Part 1",
+    "hook": "A winning trade can be a **bad** trade.",
+    "scenes": [
+     {
+      "kicker": "Four kinds of trades",
+      "lines": [
+       "Good process, won: **deserved**",
+       "Good process, lost: **bad luck**",
+       "Broke rules, won: **dumb luck**",
+       "Broke rules, lost: **deserved**"
+      ]
+     },
+     {
+      "big": [
+       "Dumb luck is the **dangerous** one.",
+       "It teaches you to repeat the mistake."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "08-sample-size",
+    "next_title": "How many trades before results mean anything"
+   }
   },
   {
    "id": "07-risk-per-trade",
@@ -740,7 +960,28 @@
     "#algotrading",
     "#quanttrading",
     "#tradingeducation"
-   ]
+   ],
+   "reel": {
+    "kicker": "Backtesting · Part 2",
+    "hook": "**30 trades** prove almost nothing.",
+    "chart_slide": 2,
+    "scenes": [
+     {
+      "kicker": "Zero edge, 30 trades",
+      "lines": [
+       "**18%** chance of a 60%+ win rate",
+       "Usual range: **33% to 67%** wins"
+      ]
+     },
+     {
+      "big": [
+       "Judge a system on **hundreds** of trades, not dozens."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "06-process-vs-outcome"
+   }
   },
   {
    "id": "09-volatility-drag",
@@ -2169,7 +2410,46 @@
     "#systematictrading",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Systematic trading · Part 2",
+    "hook": "An **80% win rate** can still lose money.",
+    "chart": {
+     "kind": "bar",
+     "title": "Average result per trade",
+     "categories": [
+      "A: wins 80%",
+      "B: wins 35%"
+     ],
+     "values": [
+      -100,
+      400
+     ],
+     "value_format": "₹{:.0f}",
+     "highlight": [
+      1
+     ],
+     "bar_ratio": 0.42
+    },
+    "chart_note": "Expectancy = win % × avg win − loss % × avg loss. Illustrative numbers.",
+    "scenes": [
+     {
+      "kicker": "Why",
+      "lines": [
+       "A wins ₹500, loses **₹2,500**",
+       "B wins **₹3,000**, loses ₹1,000"
+      ]
+     },
+     {
+      "big": [
+       "Your feelings follow the win rate.",
+       "Your account follows **expectancy**."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "04-what-is-a-system"
+   }
   },
   {
    "id": "15-costs",
@@ -3989,7 +4269,180 @@
     "#hedging",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Options basics · Part 2",
+    "hook": "A put option works like **insurance** against a fall.",
+    "chart": {
+     "kind": "line",
+     "title": "Profit or loss per unit",
+     "x": [
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87,
+      88,
+      89,
+      90,
+      91,
+      92,
+      93,
+      94,
+      95,
+      96,
+      97,
+      98,
+      99,
+      100,
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115,
+      116,
+      117,
+      118,
+      119,
+      120
+     ],
+     "series": [
+      {
+       "name": "Long put",
+       "values": [
+        25.0,
+        24.0,
+        23.0,
+        22.0,
+        21.0,
+        20.0,
+        19.0,
+        18.0,
+        17.0,
+        16.0,
+        15.0,
+        14.0,
+        13.0,
+        12.0,
+        11.0,
+        10.0,
+        9.0,
+        8.0,
+        7.0,
+        6.0,
+        5.0,
+        4.0,
+        3.0,
+        2.0,
+        1.0,
+        0.0,
+        -1.0,
+        -2.0,
+        -3.0,
+        -4.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0,
+        -5.0
+       ],
+       "focus": true
+      }
+     ],
+     "zero_line": true,
+     "area_base": 0,
+     "y_format": "{:g}",
+     "x_label": "Price at expiry",
+     "x_ticks": [
+      70,
+      80,
+      90,
+      100,
+      110,
+      120
+     ],
+     "end_dots": false,
+     "vlines": [
+      {
+       "x": 100,
+       "label": "Strike 100",
+       "side": "right"
+      }
+     ],
+     "points": [
+      {
+       "x": 95,
+       "label": "Break-even 95",
+       "dx": -22,
+       "dy": 18
+      },
+      {
+       "x": 108,
+       "label": "Max loss: −5",
+       "dx": 14,
+       "dy": -64
+      }
+     ]
+    },
+    "chart_note": "Illustrative numbers. Ignores brokerage and taxes.",
+    "scenes": [
+     {
+      "kicker": "Strike 100, premium 5",
+      "lines": [
+       "Above 100: lose the **5** premium",
+       "At 95: **break even**",
+       "Below 95: profit **grows**"
+      ]
+     },
+     {
+      "big": [
+       "Used to profit from a fall,",
+       "or to **protect** what you own."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "05-call-option-payoff"
+   }
   },
   {
    "id": "18-losing-streaks",
