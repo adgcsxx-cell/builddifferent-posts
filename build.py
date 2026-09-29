@@ -11,7 +11,7 @@
   python3 build.py reel [--id ID] [--date D]  Make today's Reel (reels/<date>-<id>.mp4) from a lesson's reel script:
                                               part 2 of the last Reel's pair if one is due, else the oldest
                                               carousel posted before today that has no Reel yet
-  python3 build.py reel-preview <id>           Still frames of a lesson's Reel for review (preview/reel-<id>/)
+  python3 build.py reel-preview <id>           Still frames of a lesson's (or meme's) Reel for review (preview/reel-<id>/)
   python3 build.py mark-reel <id> --date D --file F [--result TEXT]   Record a published Reel
 """
 import argparse
@@ -30,6 +30,11 @@ LIB = os.path.join(HERE, "content", "library.json")
 POSTED = os.path.join(HERE, "content", "posted.json")
 REELS = os.path.join(HERE, "content", "reels.json")
 CONFIG = os.path.join(HERE, "content", "config.json")
+MEMES = os.path.join(HERE, "content", "memes.json")
+
+
+def memes_by_id(approved_only=False):
+    return {m["id"]: m for m in load(MEMES, []) if m.get("approved") or not approved_only}
 
 TYPES = set(render.SLIDES)
 CHART_KINDS = set(render.CHARTS)
@@ -136,7 +141,15 @@ def cmd_check(_):
         for e in errs:
             print(f"{post['id']}: {e}")
         bad += bool(errs)
-    print(f"{len(lib['posts'])} posts checked, {bad} with problems")
+    for m in load(MEMES, []):
+        errs = validate_meme(m, by_id)
+        if m["id"] in ids:
+            errs.append("duplicate id")
+        ids.add(m["id"])
+        for e in errs:
+            print(f"{m['id']}: {e}")
+        bad += bool(errs)
+    print(f"{len(lib['posts'])} posts and {len(load(MEMES, []))} memes checked, {bad} with problems")
     return 1 if bad else 0
 
 
@@ -231,14 +244,21 @@ def reel_candidate(today, reels, posted, lib, want_id=None):
     """Which lesson gets today's Reel.
     1. `want_id` if given.
     2. Part 2 of a pair: if the last Reel's script names a `next` lesson that has no Reel yet.
-    3. Otherwise the oldest carousel posted before today that has no Reel yet."""
+    3. An approved, unused meme (content/memes.json), when the last Reel was not a meme.
+    4. Otherwise the oldest carousel posted before today that has no Reel yet."""
     have = {r["id"] for r in reels}
+    memes = memes_by_id()
     if want_id:
-        return want_id if want_id in lib else None
+        return want_id if want_id in lib or want_id in memes else None
     if reels:
         nxt = lib.get(reels[-1]["id"], {}).get("reel", {}).get("next")
         if nxt and nxt not in have and nxt in lib:
             return nxt
+        # a meme after every finished pair or single Reel (never after a meme, never inside a pair)
+        if reels[-1]["id"] not in memes:
+            for mid in memes_by_id(approved_only=True):
+                if mid not in have and memes[mid].get("lesson") in lib:
+                    return mid
     for p in posted:
         if p.get("dir") not in (None, "", "manual") and p["date"] < today and p["id"] not in have:
             return p["id"]
@@ -301,6 +321,47 @@ def validate_reel(post, lib):
     return errs
 
 
+def validate_meme(m, lib):
+    """Problems with a meme script (empty list = fine)."""
+    errs = []
+    if m.get("format") != "meme":
+        errs.append('meme: needs "format": "meme"')
+    if m.get("lesson") not in lib:
+        errs.append("meme: `lesson` must be a lesson id (its numbers back the joke)")
+    panels = m.get("panels", [])
+    if len(panels) != 2 or not all(isinstance(pn.get("caption"), str) for pn in panels):
+        errs.append("meme: needs exactly 2 panels, each with a caption")
+    elif any(len(pn["caption"].replace("**", "").split()) > 12 for pn in panels):
+        errs.append("meme: keep each panel caption to 12 words or fewer")
+    b = m.get("board", {})
+    rows = b.get("rows", [])
+    if not (b.get("title") and 3 <= len(rows) <= 5 and 0 <= b.get("me", 0) < len(rows)):
+        errs.append("meme: board needs a title, 3-5 rows and a valid `me` index")
+    if any(len(r) > 22 for r in rows):
+        errs.append("meme: keep board rows to 22 characters or fewer")
+    punch = m.get("punch", [])
+    if not 1 <= len(punch) <= 2:
+        errs.append("meme: needs 1 or 2 punch lines (the lesson's point)")
+    if not m.get("caption") or len(m.get("hashtags", [])) > 5:
+        errs.append("meme: needs a caption and at most 5 hashtags")
+    texts = [m.get("kicker", ""), b.get("title", "")] + rows + punch
+    texts += [pn.get("caption", "") + pn.get("tag", "") for pn in panels]
+    for t in texts:
+        bad = sorted({c for c in t if not supported(c)})
+        if bad:
+            errs.append(f"meme: characters not in the font: {' '.join(bad)}")
+    if not errs:
+        from bd import short
+        _, total = short.plan(lib[m["lesson"]], script=m)
+        if not 10 <= total <= 18.5:
+            errs.append(f"meme: {total:.1f} s long; aim for 10-18 s")
+    return errs
+
+
+def meme_caption(m):
+    return render.caption_text({"id": m["id"], "caption": m["caption"], "hashtags": m.get("hashtags", [])})
+
+
 def cmd_reel(a):
     from bd import reel, short
     today = a.date or ist_today()
@@ -313,6 +374,21 @@ def cmd_reel(a):
     if pid is None:
         print(json.dumps({"error": "no lesson is waiting for a Reel" if not a.id else f"unknown lesson {a.id}"}))
         return 2
+    memes = memes_by_id()
+    if pid in memes:
+        m = memes[pid]
+        errs = validate_meme(m, lib)
+        if errs:
+            print(json.dumps({"error": "meme script problems", "id": pid, "problems": errs}, ensure_ascii=False))
+            return 3
+        out = os.path.join(HERE, "reels", f"{today}-{pid}.mp4")
+        path, secs = short.make_short(lib[m["lesson"]], out, script=m)
+        problems = reel.check_specs(path)
+        rel = os.path.relpath(path, HERE)
+        print(json.dumps({"id": pid, "part": None, "kind": "meme", "file": rel, "url": urls_for([rel])[0],
+                          "seconds": round(secs, 1), "mb": round(os.path.getsize(path) / 1e6, 2),
+                          "problems": problems, "caption": meme_caption(m)}, ensure_ascii=False, indent=1))
+        return 4 if problems else 0
     post = lib[pid]
     if not post.get("reel"):
         print(json.dumps({"error": f"{pid} has no reel script: write one (content/SCHEMA.md, 'Reel scripts'), "
@@ -335,15 +411,29 @@ def cmd_reel(a):
 def cmd_reel_preview(a):
     from bd import short
     lib = {p["id"]: p for p in load(LIB, {"posts": []})["posts"]}
-    post = lib.get(a.id)
-    if not post or not post.get("reel"):
+    memes = memes_by_id()
+    if a.id in memes:
+        script = memes[a.id]
+        post = lib.get(script.get("lesson"))
+    else:
+        post = lib.get(a.id)
+        script = post.get("reel") if post else None
+    if not post or not script:
         print("no reel script for", a.id)
         return 1
-    scenes = short.build_scenes(post, post["reel"])
+    scenes = short.build_scenes(post, script)
     starts, total = short.timeline(scenes)
-    times = [0.0, 0.7, starts[0] + scenes[0].duration - 0.5]
+    if a.id in memes:
+        from bd import meme
+        times = [0.0, meme.SWITCH - 0.3, meme.SWITCH + 0.5, starts[0] + scenes[0].duration - 0.5]
+    else:
+        times = [0.0, 0.7, starts[0] + scenes[0].duration - 0.5]
     times += [st + sc.duration - 0.6 for st, sc in zip(starts[1:], scenes[1:])]
-    for pth in short.preview(post, times, os.path.join(HERE, "preview", f"reel-{a.id}")):
+    out_dir = os.path.join(HERE, "preview", f"reel-{a.id}")
+    if os.path.isdir(out_dir):
+        for f in os.listdir(out_dir):
+            os.remove(os.path.join(out_dir, f))
+    for pth in short.preview(post, times, out_dir, script=script):
         print(pth)
     return 0
 
@@ -367,8 +457,11 @@ def cmd_status(_):
     scripted = [p["id"] for p in lib["posts"] if p.get("reel") and p["id"] not in {r["id"] for r in reels}]
     print(json.dumps({"posted": len(done), "remaining": len(left), "next": left[:3],
                       "reels_posted": len(reels), "next_reel": nxt,
-                      "next_reel_has_script": bool(nxt and lib_by_id[nxt].get("reel")),
-                      "unused_reel_scripts": len(scripted)}, indent=1))
+                      "next_reel_has_script": bool(nxt and (nxt in memes_by_id() or lib_by_id[nxt].get("reel"))),
+                      "unused_reel_scripts": len(scripted),
+                      "unused_memes_approved": sum(1 for k in memes_by_id(True) if k not in {r["id"] for r in reels}),
+                      "memes_waiting_for_approval": [k for k, m in memes_by_id().items() if not m.get("approved")]},
+                     indent=1))
     return 0
 
 

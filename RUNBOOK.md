@@ -52,6 +52,13 @@ one or two short text beats, and a follow ending, over original generated sound.
 7. `python3 build.py mark-reel <id> --date <date> --file <file> --result "<link or result>"`, commit and push.
 8. Report: one line with the lesson title, part 1 or 2, and the Reel link.
 
+### Meme Reels
+
+`next_reel` can be a meme id (`meme-...`, from `content/memes.json`) after a finished pair or single Reel. It
+runs through the same steps: `reel` builds it and prints its caption, `reel-preview <meme id>` writes stills,
+and `mark-reel` records it. Only memes with `"approved": true` are ever picked. Never approve a meme yourself;
+Ad approves each one after seeing it. `status` lists memes still waiting for approval.
+
 ## If something breaks
 
 - Zapier auth error or stale connection: stop and tell the owner to reconnect Instagram in Zapier.

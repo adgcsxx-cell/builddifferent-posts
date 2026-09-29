@@ -134,6 +134,7 @@ class ChartPanel:
     """The lesson's chart on a panel, drawn twice (ghost marks / full) and wiped in."""
 
     REVEAL = {"bar": 1.25, "line": 1.5, "candles": 1.6}
+    timed = True
 
     def __init__(self, spec, note, x, y, w, h):
         k = CHART_SCALE
@@ -246,7 +247,7 @@ class Scene:
                 continue
             dy = 46 * (1 - e) - 64 * exit_q
             op = e * (1 - exit_q)
-            if isinstance(obj, ChartPanel):
+            if getattr(obj, "timed", False):
                 obj.draw(frame, t, 0, dy, op)
             else:
                 obj.draw(frame, 0, dy, op)
@@ -263,29 +264,45 @@ def _centre(layers, gaps):
 
 
 def hook_scene(post, script):
-    kick = kicker_layer(script.get("kicker", post.get("pillar", "")), MX, TOP)
-    chart = None
+    """Full-screen hook: kicker + the claim in the biggest type that fits, centred. Nothing else on screen,
+    so the very first frame (also the grid thumbnail) reads in under a second."""
+    kick = kicker_layer(script.get("kicker", post.get("pillar", "")), MX, TOP, size=32)
+    hook, size = text_layer(script["hook"], "bold", [150, 140, 130, 120, 112, 104, 96, 88], CW, 820,
+                            MX, TOP + 56, lh_mult=1.06)
+    _centre([kick, hook], [0, 30])
+    has_chart = bool(script.get("chart") or script.get("chart_slide"))
+    dur = snap(0.9 + 0.2 * words(script["hook"]), minimum=4 if has_chart else 5)
+    sc = Scene(dur)
+    sc.items = [(kick, 0), (hook, 0)]
+    sc.events = [(0.0, "impact")]
+    return sc
+
+
+def chart_scene(post, script):
+    """The lesson's chart, large, drawing itself in right after the hook."""
     spec, note = script.get("chart"), script.get("chart_note")
     if not spec and script.get("chart_slide"):
         sp = post["slides"][script["chart_slide"] - 1]
         spec, note = sp["chart"], sp.get("note")
-    if spec:
-        hook, size = text_layer(script["hook"], "bold", [100, 94, 88, 82, 76, 70, 64], CW, 420,
-                                MX, TOP + 56, lh_mult=1.1)
-        py = hook.bottom + 34
-        ph = min(640, BOTTOM - 44 - py)
-        chart = ChartPanel(spec, note, MX - 12, py, FW - 2 * (MX - 12), ph)
-        dur = snap(1.0 + 0.2 * words(script["hook"]) + chart.emph_at + 0.6, minimum=7)
-    else:
-        hook, size = text_layer(script["hook"], "bold", [128, 120, 112, 104, 96, 88], CW, 820,
-                                MX, TOP + 56, lh_mult=1.1)
-        _centre([kick, hook], [0, 26])
-        dur = snap(1.2 + 0.22 * words(script["hook"]), minimum=5)
-    sc = Scene(dur)
-    sc.items = [(kick, 0), (hook, 0)] + ([(chart, 0)] if chart else [])
-    sc.events = [(0.0, "impact")]
-    if chart and chart.focus:
-        sc.events.append((chart.emph_at, "pop"))
+    if not spec:
+        return None
+    kick = kicker_layer(script.get("chart_kicker", "The math"), MX, 0, size=32)
+    ph = 820
+    chart = ChartPanel(spec, note, MX - 12, 0, FW - 2 * (MX - 12), ph)
+    total = kick.h + 30 + (chart.bottom - chart.full.y)
+    y = TOP + max(0, (BOTTOM - TOP - total) / 2) - 20
+    kick.y = int(y)
+    dy = int(y + kick.h + 30)
+    chart.full.y = dy
+    if chart.note:
+        chart.note.y = dy + ph + 14
+    chart.focus = [(fx, fy + dy) for fx, fy in chart.focus]
+    chart.reveal_start = 0.3
+    chart.emph_at = chart.reveal_start + chart.reveal + 0.3
+    sc = Scene(snap(chart.emph_at + 1.3, minimum=5))
+    sc.items = [(kick, 0.05), (chart, 0.1)]
+    if chart.focus:
+        sc.events = [(chart.emph_at, "pop")]
     return sc
 
 
@@ -353,7 +370,13 @@ def cta_scene(script, next_title=None):
 
 
 def build_scenes(post, script, next_title=None):
+    if script.get("format") == "meme":
+        from .meme import meme_scenes
+        return meme_scenes(post, script) + [cta_scene(script, next_title)]
     scenes = [hook_scene(post, script)]
+    ch = chart_scene(post, script)
+    if ch:
+        scenes.append(ch)
     for s in script.get("scenes", []):
         scenes.append(lines_scene(s) if "lines" in s else big_scene(s))
     scenes.append(cta_scene(script, next_title))
@@ -383,9 +406,9 @@ def _background():
 
 
 # ----------------------------------------------------------------- build ---
-def make_short(post, out_path, next_title=None, work_dir=None):
+def make_short(post, out_path, next_title=None, work_dir=None, script=None):
     """Render the lesson's reel script to an MP4. Returns (path, seconds)."""
-    script = post["reel"]
+    script = script or post["reel"]
     scenes = build_scenes(post, script, next_title)
     starts, total = timeline(scenes)
     events = []
@@ -434,15 +457,15 @@ def make_short(post, out_path, next_title=None, work_dir=None):
     return out_path, n / FPS
 
 
-def plan(post, next_title=None):
+def plan(post, next_title=None, script=None):
     """Scene lengths without rendering video (used by build.py check)."""
-    scenes = build_scenes(post, post["reel"], next_title)
+    scenes = build_scenes(post, script or post["reel"], next_title)
     return [round(s.duration, 2) for s in scenes], round(timeline(scenes)[1], 2)
 
 
-def preview(post, times, out_dir, next_title=None):
+def preview(post, times, out_dir, next_title=None, script=None):
     """Write still frames at the given times (seconds) as PNGs, for review. Returns the paths."""
-    scenes = build_scenes(post, post["reel"], next_title)
+    scenes = build_scenes(post, script or post["reel"], next_title)
     starts, total = timeline(scenes)
     static, grid = _background()
     header = header_layer(post.get("label", ""))

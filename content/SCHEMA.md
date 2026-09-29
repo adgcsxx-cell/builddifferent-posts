@@ -87,3 +87,41 @@ ending. Sound is generated (bd/sound.py), so nothing needs licensing.
   and end with "Follow for more".
 - Every number must come from the lesson itself (computed in `make_library.py`), and the content rules above apply.
 - `python3 build.py check` validates scripts and their length; `python3 build.py reel-preview <id>` writes stills.
+
+### Opening frame
+
+Every Reel now opens on the hook alone, in the biggest type that fits and centred, so the first frame (also the
+grid thumbnail) reads in under a second. When the script has a chart, it follows as its own scene, large, under
+a small kicker (`chart_kicker`, default "The math").
+
+## Meme Reels (`content/memes.json`)
+
+A meme Reel is a two-beat "expectation vs reality" joke that lands on a lesson's point, drawn by `bd/meme.py`
+(no outside images or meme templates). The joke is always on the overconfident trader. It must never suggest
+that trading pays, beats a career, or makes money.
+
+```json
+{
+  "id": "meme-01-career-rankings",
+  "lesson": "07-risk-per-trade",
+  "approved": false,
+  "format": "meme",
+  "kicker": "Trader life",
+  "panels": [
+    {"caption": "Me after **3 green trades** in a row:"},
+    {"caption": "Me after **10 losses** in a row, risking 5% each:", "tag": "-40%"}
+  ],
+  "board": {"title": "Career rankings", "rows": ["Trader (me)", "Doctor", "CEO", "Pilot"], "me": 0},
+  "punch": ["Same 10 losses at 1% risk: only **-9.6%**.", "Confidence is not a **risk plan**."],
+  "caption": "...", "hashtags": ["#tradingmemes", "..."]
+}
+```
+
+- Beat 1: panel 1's caption over the board, with the `me` row crowned at #1. Beat 2: the caption swaps, the
+  `me` row drops to last, turns red and shows `tag`. Then the `punch` lines (1 or 2), then "Follow for more".
+- `lesson`: the lesson whose numbers back the joke. Every number in the tag, punch and caption comes from it.
+- `approved`: the Reels job only uses memes with `"approved": true`. Ad approves each new meme after
+  seeing it, so new memes start as `false`.
+- Scheduling: an approved, unused meme goes out after each finished pair or single Reel, never inside a pair
+  and never twice in a row.
+- `python3 build.py check` validates memes and `python3 build.py reel-preview <meme id>` writes stills.
