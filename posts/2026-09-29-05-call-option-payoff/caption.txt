@@ -1,0 +1,16 @@
+Options sound complicated. The core idea isn't.
+
+A call option gives you the right, not the obligation, to buy at a fixed price (the strike) before expiry. You pay a premium for that right.
+
+In the example (strike 100, premium 5):
+→ Below 100 at expiry: the option expires worthless. You lose 5, never more.
+→ At 105: you break even.
+→ Above 105: profit grows with the price.
+
+The catch is time. Every day, part of that premium melts away. That's the next lesson in this series.
+
+Follow for one clear lesson a day.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#optionstrading #optionsbasics #derivatives #tradingeducation #stockmarketindia
