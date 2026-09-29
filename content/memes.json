@@ -2,16 +2,39 @@
  {
   "id": "meme-01-career-rankings",
   "lesson": "07-risk-per-trade",
-  "approved": false,
+  "approved": true,
   "format": "meme",
   "kicker": "Trader life",
   "panels": [
-   {"caption": "Me after **3 green trades** in a row:"},
-   {"caption": "Me after **10 losses** in a row, risking 5% each:", "tag": "-40%"}
+   {
+    "caption": "Me after **3 green trades** in a row:"
+   },
+   {
+    "caption": "Me after **10 losses** in a row, risking 5% each:",
+    "tag": "-40%"
+   }
   ],
-  "board": {"title": "Career rankings", "rows": ["Trader (me)", "Doctor", "CEO", "Pilot"], "me": 0},
-  "punch": ["Same 10 losses at 1% risk: only **-9.6%**.", "Confidence is not a **risk plan**."],
+  "board": {
+   "title": "Career rankings",
+   "rows": [
+    "Trader (me)",
+    "Doctor",
+    "CEO",
+    "Pilot"
+   ],
+   "me": 0
+  },
+  "punch": [
+   "Same 10 losses at 1% risk: only **-9.6%**.",
+   "Confidence is not a **risk plan**."
+  ],
   "caption": "3 green trades and suddenly trading is the best career on earth. 👑\n\nThen the losing streak shows up. It always does, for every trader and every system.\n\nThe math from Lesson 07:\n→ 10 losses in a row at 5% risk per trade: down about 40%\n→ The same 10 losses at 1% risk: down about 9.6%\n\nThe streak is the same. Position size decides whether it's a bad week or the end of the account.\n\nTag the friend who ranks trading above every career after one good day. 😅",
-  "hashtags": ["#tradingmemes", "#tradermemes", "#riskmanagement", "#positionsizing", "#stockmarketindia"]
+  "hashtags": [
+   "#tradingmemes",
+   "#tradermemes",
+   "#riskmanagement",
+   "#positionsizing",
+   "#stockmarketindia"
+  ]
  }
 ]
