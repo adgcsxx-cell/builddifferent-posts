@@ -1,0 +1,16 @@
+How much you risk per trade matters more than how you pick trades.
+
+Take the same streak of 10 losing trades:
+→ Risking 1% per trade: down about 10%
+→ Risking 2%: down about 18%
+→ Risking 5%: down about 40%
+
+To lose 20% of your account you'd need 23 losses in a row at 1% risk, but only 5 at 5% risk.
+
+Streaks happen to every trader and every system. Your position size decides whether a streak is a bad week or the end of your account.
+
+What do you risk per trade? Be honest in the comments.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#riskmanagement #positionsizing #tradingpsychology #stockmarketindia #optionstrading
