@@ -1,0 +1,13 @@
+Your strategy won 19 of its last 30 trades. Is it good?
+
+Maybe. Or maybe it's a coin flip having a lucky month.
+
+If a strategy has zero edge (a true 50% win rate), there's still an 18% chance it wins 18 or more of 30 trades. That's a 60%+ win rate from pure luck, roughly 1 time in 5.
+
+Small samples are noisy. Before trusting any system, backtest or live, you need enough trades for the edge to stand out from the noise. Think hundreds, across different market conditions.
+
+Save this before you judge your next strategy on one good month.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#backtesting #systematictrading #algotrading #quanttrading #tradingeducation
