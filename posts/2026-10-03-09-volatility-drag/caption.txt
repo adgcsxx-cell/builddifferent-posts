@@ -1,0 +1,13 @@
+Two strategies both average +10% a year. After 10 years, one turns ₹100 into ₹259. The other, only ₹176.
+
+The difference is volatility.
+
+A +40% year followed by a −20% year averages +10%, but compounds to only about +5.8% a year. Big swings drag your real (geometric) return below the simple average.
+
+The classic example: +50% then −50% leaves you down 25%, not flat.
+
+That's why controlling drawdowns isn't just about comfort. It's math. Smoother returns compound faster.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#compounding #riskmanagement #personalfinance #stockmarketindia #tradingeducation
