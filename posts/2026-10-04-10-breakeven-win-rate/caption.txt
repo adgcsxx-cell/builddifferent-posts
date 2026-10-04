@@ -1,0 +1,14 @@
+"My strategy wins 70% of the time." Great, but how much do you win versus lose?
+
+A win rate only means something next to the payoff:
+→ Win the same as you lose (1:1): you need 50% winners to break even.
+→ Win twice what you lose (2:1): just 33%.
+→ Win three times (3:1): only 25%.
+
+The formula: break-even win rate = 1 ÷ (1 + R), where R is your average win divided by your average loss. Add costs and you need a little more.
+
+Know both numbers for your own trading. Which one do you track today?
+
+Education only, not investment advice. Not SEBI-registered.
+
+#riskmanagement #riskreward #tradingstrategy #tradingeducation #stockmarketindia
