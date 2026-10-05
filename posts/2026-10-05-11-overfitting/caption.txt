@@ -1,0 +1,13 @@
+If your backtest equity curve looks like a staircase to heaven, be careful.
+
+When you try hundreds of settings and keep the best, you usually find the one that best matched past noise. It looks brilliant on old data and falls apart on new data. That's over-fitting.
+
+Robust strategies look less exciting in testing, but they keep working when the market changes.
+
+Simple rules. Out-of-sample testing. Settings that work across a range, not at one magic number.
+
+Have you ever had a backtest fall apart live?
+
+Education only, not investment advice. Not SEBI-registered.
+
+#backtesting #algotrading #systematictrading #quanttrading #tradingstrategy
