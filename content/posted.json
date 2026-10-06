@@ -75,5 +75,12 @@
   "dir": "posts/2026-10-05-11-overfitting",
   "slides": 5,
   "result": "https://www.instagram.com/p/DeHXIHkjGVo/"
+ },
+ {
+  "id": "12-time-decay",
+  "date": "2026-10-06",
+  "dir": "posts/2026-10-06-12-time-decay",
+  "slides": 5,
+  "result": "https://www.instagram.com/p/DeJ790jDBnV/"
  }
 ]
