@@ -1,0 +1,13 @@
+Every option has an expiry date, and the clock never stops.
+
+The part of an option's price that comes from time (its time value) shrinks every day, and not evenly: it speeds up as expiry gets closer.
+
+In the simplified model shown, an at-the-money option still has about 48% of its time value with 7 days left, then loses all of it in the final week.
+
+That's why buyers need the move to happen fast, and why sellers are paid to wait (while carrying the risk of a sharp move).
+
+Next time you buy an option, check how many days you're paying for.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#optionstrading #optionsbasics #thetadecay #tradingeducation #stockmarketindia
