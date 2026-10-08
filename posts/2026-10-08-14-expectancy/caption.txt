@@ -1,0 +1,15 @@
+Strategy A wins 80% of its trades. Strategy B wins only 35%. Which one makes money?
+
+B does.
+→ A: wins ₹500 on average, loses ₹2,500. Expectancy: −₹100 per trade.
+→ B: wins ₹3,000 on average, loses ₹1,000. Expectancy: +₹400 per trade.
+
+Expectancy = (win % × average win) − (loss % × average loss). It tells you what one trade is worth, on average, over many trades.
+
+A high win rate feels great, but feelings don't pay. Know your expectancy after costs.
+
+(Illustrative numbers.)
+
+Education only, not investment advice. Not SEBI-registered.
+
+#riskmanagement #tradingstrategy #systematictrading #tradingeducation #stockmarketindia
