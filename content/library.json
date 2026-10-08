@@ -1272,7 +1272,30 @@
     "#tradingstrategy",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Win rate math · Part 1",
+    "hook": "At **2:1** reward to risk, losing **2 trades in 3** still breaks even.",
+    "chart_slide": 2,
+    "scenes": [
+     {
+      "kicker": "Break-even win rate",
+      "lines": [
+       "1:1 needs **50%** winners",
+       "2:1 needs **33%**",
+       "3:1 needs only **25%**"
+      ]
+     },
+     {
+      "big": [
+       "A win rate means nothing without the **payoff**."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "15-costs",
+    "next_title": "How costs push that number higher"
+   }
   },
   {
    "id": "11-overfitting",
@@ -4029,7 +4052,29 @@
     "#systematictrading",
     "#tradingcosts",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Win rate math · Part 2",
+    "hook": "Costs can turn a winning strategy into a **losing** one.",
+    "chart_slide": 2,
+    "scenes": [
+     {
+      "kicker": "Per trade, illustrative",
+      "lines": [
+       "Average profit: **₹250**",
+       "Costs: **₹200**",
+       "Left for you: **₹50**"
+      ]
+     },
+     {
+      "big": [
+       "In this example, **80%** of the edge goes to costs."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "10-breakeven-win-rate"
+   }
   },
   {
    "id": "16-what-is-an-index",
