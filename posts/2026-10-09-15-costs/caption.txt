@@ -1,0 +1,11 @@
+Your strategy makes ₹250 per trade on average. Costs take ₹200. You're left with ₹50.
+
+In a backtest without costs, that looks like a great system. In real life, 80% of the edge is gone before it reaches your account.
+
+Brokerage, exchange charges, taxes and slippage are small on one trade. Over hundreds of trades, they're often the difference between a strategy that works and one that doesn't. The more often you trade, the more they matter.
+
+Always backtest with realistic costs, and check your actual contract notes.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#algotrading #backtesting #systematictrading #tradingcosts #stockmarketindia
