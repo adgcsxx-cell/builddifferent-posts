@@ -1,0 +1,14 @@
+You hear "Nifty is up 1%" every day. But what is it actually measuring?
+
+The Nifty 50 is a basket of 50 large companies on the NSE, turned into one number. It's weighted by free-float market capitalisation, so the biggest companies (counting only shares available to trade) have the most influence.
+
+A few things most beginners don't know:
+→ The members are reviewed twice a year, so the basket changes
+→ You can't buy the index itself; you use index funds, ETFs, futures or options
+→ The Sensex is the BSE's version, with 30 companies
+
+Save this for anyone just getting started.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#nifty50 #stockmarketindia #sensex #investingbasics #tradingeducation
