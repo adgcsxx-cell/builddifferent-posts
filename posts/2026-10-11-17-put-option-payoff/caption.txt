@@ -1,0 +1,16 @@
+If a call is a bet on a rise, a put is the mirror image.
+
+A put option gives you the right (not the obligation) to sell at a fixed price, the strike, before expiry. You pay a premium for it.
+
+Example (strike 100, premium 5):
+→ Above 100 at expiry: it expires worthless. You lose 5, never more.
+→ At 95: break-even.
+→ Below 95: profit grows as the price falls.
+
+Many investors use puts like insurance: a small, known cost to limit the damage from a big fall.
+
+Coming up: why hedges matter for option sellers.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#optionstrading #optionsbasics #hedging #tradingeducation #stockmarketindia
