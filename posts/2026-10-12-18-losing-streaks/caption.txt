@@ -1,0 +1,14 @@
+Five losses in a row doesn't mean your strategy is broken. It usually means you've taken enough trades.
+
+Over 100 trades, the chance of seeing at least 5 losses in a row:
+→ 40% win rate: 98%
+→ 50% win rate: 81%
+→ 60% win rate: 46%
+
+Even good systems go through ugly stretches. Traders who don't know this abandon good strategies at exactly the wrong time.
+
+Work out what's normal for your system before the streak arrives. Then size so you can survive it.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#riskmanagement #tradingpsychology #systematictrading #tradingeducation #stockmarketindia
