@@ -1,0 +1,16 @@
+A trap almost every beginner falls into: tuning a strategy on 5 years of data, then 'testing' it on the same 5 years.
+
+Of course it looks good. It was built to fit that exact history.
+
+Walk-forward testing fixes this:
+1. Tune the rules on one period
+2. Test them on the next period, which they've never seen
+3. Slide forward and repeat
+
+Only the unseen test periods count. It's the closest thing to live trading you can do with historical data.
+
+Do you test your strategies out-of-sample?
+
+Education only, not investment advice. Not SEBI-registered.
+
+#backtesting #algotrading #systematictrading #quanttrading #tradingstrategy
