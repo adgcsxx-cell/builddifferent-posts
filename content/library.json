@@ -2142,7 +2142,30 @@
     "#systematictrading",
     "#quanttrading",
     "#tradingstrategy"
-   ]
+   ],
+   "reel": {
+    "kicker": "Backtesting traps · Part 1",
+    "hook": "The **perfect** backtest is usually the one that fails live.",
+    "chart_slide": 2,
+    "scenes": [
+     {
+      "kicker": "How it happens",
+      "lines": [
+       "Test **200** settings",
+       "Keep the best one",
+       "It fitted the **noise**, not a pattern"
+      ]
+     },
+     {
+      "big": [
+       "Noise doesn't repeat, so the edge **disappears** live."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "19-walk-forward",
+    "next_title": "How to catch a fake edge before it costs you"
+   }
   },
   {
    "id": "12-time-decay",
@@ -4630,7 +4653,28 @@
     "#systematictrading",
     "#quanttrading",
     "#tradingstrategy"
-   ]
+   ],
+   "reel": {
+    "kicker": "Backtesting traps · Part 2",
+    "hook": "Don't test on the data you tuned on. **Walk forward.**",
+    "scenes": [
+     {
+      "kicker": "Walk-forward testing",
+      "lines": [
+       "**Build:** tune on one period",
+       "**Test:** the next, unseen period",
+       "Slide forward and repeat"
+      ]
+     },
+     {
+      "big": [
+       "If results collapse on unseen data, the edge was **noise**."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "11-overfitting"
+   }
   },
   {
    "id": "20-fomo",
