@@ -1,0 +1,13 @@
+Option sellers win often. But without a hedge, one bad day can wipe out months.
+
+Sell a call and a put at 100 (a short straddle) for a total premium of 8, and your profit is capped at 8, while your loss has no limit if the market gaps hard either way.
+
+Now buy a 90 put and a 110 call for 2 (turning it into an iron fly). You keep less premium (6), but your worst case is capped at 4.
+
+That's the trade-off: a little less income for a known, survivable worst case. In India, hedged positions usually need much less margin too.
+
+(Illustrative numbers. Not a recommendation.)
+
+Education only, not investment advice. Not SEBI-registered.
+
+#optionselling #optionstrading #hedging #riskmanagement #stockmarketindia
