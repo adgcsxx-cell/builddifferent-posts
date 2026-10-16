@@ -145,5 +145,12 @@
   "dir": "posts/2026-10-15-21-hedged-vs-naked",
   "slides": 5,
   "result": "media id 18113272676027102"
+ },
+ {
+  "id": "22-position-size-formula",
+  "date": "2026-10-16",
+  "dir": "posts/2026-10-16-22-position-size-formula",
+  "slides": 5,
+  "result": "media id 18128455589494167"
  }
 ]
