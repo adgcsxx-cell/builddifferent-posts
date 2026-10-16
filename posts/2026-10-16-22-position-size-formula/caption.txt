@@ -1,0 +1,15 @@
+Most traders pick a position size by feel: "I'll buy 500 shares." Professionals work it out backwards from the stop-loss.
+
+Position size = (capital × risk %) ÷ (entry − stop)
+
+Example: ₹10,00,000 capital, 1% risk = ₹10,000. Entry ₹500, stop ₹480, so ₹20 risk per share. Position: 10,000 ÷ 20 = 500 shares.
+
+If the stop is hit, you lose about ₹10,000, exactly what you planned (plus costs).
+
+A wider stop means fewer shares; a tighter stop means more. Your risk stays the same.
+
+(Illustrative numbers.)
+
+Education only, not investment advice. Not SEBI-registered.
+
+#positionsizing #riskmanagement #stoploss #tradingeducation #stockmarketindia
