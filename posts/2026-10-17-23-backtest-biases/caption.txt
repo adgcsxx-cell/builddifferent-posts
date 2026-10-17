@@ -1,0 +1,13 @@
+Your backtest might be lying to you, and not because of the strategy.
+
+Two classic bugs:
+
+1. Look-ahead bias: the test uses information you couldn't have known at the time, like trading at the open using that day's close.
+
+2. Survivorship bias: testing only on stocks that exist today. The ones that went bust or were dropped from the index vanish from the data, and results look better than they ever were.
+
+Both inflate returns, and both are easy to miss. Run the quick audit on the slides before you trust any backtest.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#backtesting #algotrading #quanttrading #systematictrading #tradingeducation
