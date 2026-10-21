@@ -1,0 +1,13 @@
+Same underlying, same strike, same days to expiry, and the option costs twice as much. Why?
+
+Implied volatility (IV): the size of move the market is pricing in.
+
+In the Black-Scholes example (price 100, strike 100, 30 days), an at-the-money call costs about 1.7 at 15% IV and about 3.4 at 30% IV. Double the IV, roughly double the premium.
+
+IV tends to rise before big events like results or elections, and drop sharply after. That drop can shrink an option's price even when you got the direction right.
+
+Always check IV before you trade an option.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#optionstrading #impliedvolatility #optionsbasics #tradingeducation #stockmarketindia
