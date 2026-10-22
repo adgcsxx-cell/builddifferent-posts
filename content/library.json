@@ -1106,7 +1106,30 @@
     "#personalfinance",
     "#stockmarketindia",
     "#tradingeducation"
-   ]
+   ],
+   "reel": {
+    "kicker": "Compounding · Part 1",
+    "hook": "+50% then −50% isn't break-even. It's **−25%**.",
+    "chart_slide": 3,
+    "scenes": [
+     {
+      "kicker": "Start with ₹1,00,000",
+      "lines": [
+       "+50%: now **₹1,50,000**",
+       "−50%: now **₹75,000**",
+       "Real result: **−25%**, not 0%"
+      ]
+     },
+     {
+      "big": [
+       "Big swings drag down what you **actually** earn."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "29-drawdown-vs-risk",
+    "next_title": "How your risk per trade sets the size of those swings"
+   }
   },
   {
    "id": "10-breakeven-win-rate",
@@ -6192,7 +6215,31 @@
     "#montecarlo",
     "#systematictrading",
     "#tradingeducation"
-   ]
+   ],
+   "reel": {
+    "kicker": "Compounding · Part 2",
+    "hook": "Risk **2%** per trade instead of 1%, and your typical drawdown roughly **doubles**.",
+    "chart_slide": 2,
+    "chart_kicker": "20,000 simulations",
+    "scenes": [
+     {
+      "kicker": "Typical worst drawdown",
+      "lines": [
+       "1% risk: about **12%**",
+       "2% risk: about **22%**",
+       "5% risk: about **49%**"
+      ]
+     },
+     {
+      "big": [
+       "Pick your risk by the drawdown",
+       "you can **live with**."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "09-volatility-drag"
+   }
   },
   {
    "id": "30-trading-journal",
