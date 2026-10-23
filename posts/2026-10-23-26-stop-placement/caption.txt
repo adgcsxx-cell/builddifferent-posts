@@ -1,0 +1,11 @@
+Where do you put your stop-loss? If the answer is "wherever it starts to hurt", read on.
+
+A stop based on pain ("I'll exit at −₹5,000") sits at a random spot the market doesn't care about. It gets hit by normal noise, and then price carries on in your direction without you.
+
+A logical stop sits where your trade idea is proven wrong: for example, just below a floor that price has respected. If that level breaks, the reason for the trade is gone.
+
+Pick the logical stop first. Then size your position so that stop equals the risk you planned.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#stoploss #riskmanagement #technicalanalysis #tradingeducation #stockmarketindia
