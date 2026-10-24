@@ -64,5 +64,11 @@
   "date": "2026-10-22",
   "file": "reels/2026-10-22-09-volatility-drag.mp4",
   "result": "media id 18048988505819913 (short format, part 1 of a pair with 29-drawdown-vs-risk; published on first 'still processing' retry)"
+ },
+ {
+  "id": "29-drawdown-vs-risk",
+  "date": "2026-10-24",
+  "file": "reels/2026-10-24-29-drawdown-vs-risk.mp4",
+  "result": "media id 18121709713736888 (short format, part 2 of 09-volatility-drag; published on first 'still processing' retry)"
  }
 ]
