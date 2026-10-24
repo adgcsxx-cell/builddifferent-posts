@@ -1033,7 +1033,7 @@ def posts():
         "id": "27-monte-carlo-drawdown", "pillar": "Systems", "label": "Lesson 27 · Systems",
         "slides": [
             {"type": "cover", "kicker": "Monte Carlo",
-             "title": "Same 100 trades, same profit, and a drawdown anywhere from **4R to 26R**.",
+             "title": "Same 100 trades, same profit, and a drawdown anywhere from **3.5R to 24R**.",
              "sub": "Your backtest's drawdown is just one roll of the dice."},
             {"type": "chart", "title": "One set of trades, 20,000 orders",
              "body": "45 wins of +1.5R and 55 losses of −1R, shuffled. Every order ends at +12.5R.",
@@ -1044,7 +1044,7 @@ def posts():
             {"type": "text", "title": "What this tells you",
              "body": "**R** is the amount you risk on each trade.\n"
                      "- Every shuffle ends with the **same** +12.5R profit.\n"
-                     "- But the worst drawdown ranges from 4R to 26R.\n"
+                     "- But the worst drawdown ranges from 3.5R to 24R.\n"
                      "- In 1 order out of 20, it's 14.5R or deeper, with identical trades.\n"
                      "The order of wins and losses is luck. Your backtest showed you just one order.",
              "callout": "Plan for the bad-luck drawdown, not the one in your backtest."},
@@ -1058,7 +1058,7 @@ def posts():
         "caption": "Your backtest says the worst drawdown was 9R. Should you plan for 9R?\n\n"
                    "We took 100 trades (45 wins of +1.5R, 55 losses of −1R) and shuffled their order 20,000 times. Every version ends "
                    "with exactly the same profit: +12.5R.\n\n"
-                   "But the worst drawdown ranged from 4R to 26R. One order in 20 hit 14.5R or worse.\n\n"
+                   "But the worst drawdown ranged from 3.5R to 24R. One order in 20 hit 14.5R or worse.\n\n"
                    "The order of wins and losses is luck, and your backtest shows you just one order. Size for the bad-luck version, "
                    "not the lucky one.\n\n(R = amount risked per trade. Simulation, not real trades.)",
         "hashtags": ["#montecarlo", "#backtesting", "#riskmanagement", "#systematictrading", "#quanttrading"],

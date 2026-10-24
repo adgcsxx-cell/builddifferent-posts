@@ -5970,7 +5970,7 @@
     {
      "type": "cover",
      "kicker": "Monte Carlo",
-     "title": "Same 100 trades, same profit, and a drawdown anywhere from **4R to 26R**.",
+     "title": "Same 100 trades, same profit, and a drawdown anywhere from **3.5R to 24R**.",
      "sub": "Your backtest's drawdown is just one roll of the dice."
     },
     {
@@ -6013,7 +6013,7 @@
     {
      "type": "text",
      "title": "What this tells you",
-     "body": "**R** is the amount you risk on each trade.\n- Every shuffle ends with the **same** +12.5R profit.\n- But the worst drawdown ranges from 4R to 26R.\n- In 1 order out of 20, it's 14.5R or deeper, with identical trades.\nThe order of wins and losses is luck. Your backtest showed you just one order.",
+     "body": "**R** is the amount you risk on each trade.\n- Every shuffle ends with the **same** +12.5R profit.\n- But the worst drawdown ranges from 3.5R to 24R.\n- In 1 order out of 20, it's 14.5R or deeper, with identical trades.\nThe order of wins and losses is luck. Your backtest showed you just one order.",
      "callout": "Plan for the bad-luck drawdown, not the one in your backtest."
     },
     {
@@ -6030,7 +6030,7 @@
      "type": "cta"
     }
    ],
-   "caption": "Your backtest says the worst drawdown was 9R. Should you plan for 9R?\n\nWe took 100 trades (45 wins of +1.5R, 55 losses of −1R) and shuffled their order 20,000 times. Every version ends with exactly the same profit: +12.5R.\n\nBut the worst drawdown ranged from 4R to 26R. One order in 20 hit 14.5R or worse.\n\nThe order of wins and losses is luck, and your backtest shows you just one order. Size for the bad-luck version, not the lucky one.\n\n(R = amount risked per trade. Simulation, not real trades.)",
+   "caption": "Your backtest says the worst drawdown was 9R. Should you plan for 9R?\n\nWe took 100 trades (45 wins of +1.5R, 55 losses of −1R) and shuffled their order 20,000 times. Every version ends with exactly the same profit: +12.5R.\n\nBut the worst drawdown ranged from 3.5R to 24R. One order in 20 hit 14.5R or worse.\n\nThe order of wins and losses is luck, and your backtest shows you just one order. Size for the bad-luck version, not the lucky one.\n\n(R = amount risked per trade. Simulation, not real trades.)",
    "hashtags": [
     "#montecarlo",
     "#backtesting",
@@ -6373,6 +6373,255 @@
     "#tradingpsychology",
     "#systematictrading",
     "#riskmanagement",
+    "#tradingeducation"
+   ]
+  },
+  {
+   "id": "33-cut-winners-hold-losers",
+   "pillar": "Psychology",
+   "label": "Lesson 33 · Psychology",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Trading psychology",
+     "title": "Cutting winners early and holding losers can turn an edge **negative**.",
+     "sub": "Same entries, same win rate. Different habits."
+    },
+    {
+     "type": "text",
+     "title": "Why we do it",
+     "body": "- Booking a small profit feels like being right.\n- Closing a loss feels like admitting you were wrong.\n- So winners get cut early, and losers get \"one more day\".\nPsychologists call this the disposition effect.",
+     "callout": "The pain of a loss feels bigger than the joy of an equal gain."
+    },
+    {
+     "type": "compare",
+     "title": "Same trades, two habits",
+     "cards": [
+      {
+       "name": "Following the plan",
+       "rows": [
+        [
+         "Win rate",
+         "50%"
+        ],
+        [
+         "Average win",
+         "₹2,000"
+        ],
+        [
+         "Average loss",
+         "₹1,000"
+        ]
+       ],
+       "result": "+₹500",
+       "result_label": "Per trade, on average",
+       "pill": "Positive edge",
+       "good": true
+      },
+      {
+       "name": "Cut winners, hold losers",
+       "rows": [
+        [
+         "Win rate",
+         "50%"
+        ],
+        [
+         "Average win",
+         "₹1,000"
+        ],
+        [
+         "Average loss",
+         "₹1,500"
+        ]
+       ],
+       "result": "−₹250",
+       "result_label": "Per trade, on average",
+       "pill": "Negative edge",
+       "good": false
+      }
+     ],
+     "body": "Nothing changed except when you exit. Illustrative numbers."
+    },
+    {
+     "type": "stat",
+     "value": "60%",
+     "label": "win rate needed just to break even with those habits.",
+     "body": "With ₹1,000 average wins and ₹1,500 average losses, you must win 3 trades out of 5 just to stay flat."
+    },
+    {
+     "type": "checklist",
+     "title": "Habits that help",
+     "items": [
+      "Set your stop and target before you enter.",
+      "Never widen a stop once the trade is live.",
+      "Exit on your rule, not on how the trade feels.",
+      "Review average win and average loss in your journal every month."
+     ]
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "Two traders take the exact same trades. Both win 50% of the time.\n\nOne follows the plan: wins average ₹2,000, losses ₹1,000. That's +₹500 per trade on average.\n\nThe other books profits early and gives losers \"one more day\": wins shrink to ₹1,000, losses grow to ₹1,500. That's −₹250 per trade.\n\nSame entries. The only difference is when they exit.\n\nThis is the disposition effect: closing a winner feels good, closing a loser feels like admitting a mistake. Rules set before the trade are how you beat it.\n\nWhich one do you struggle with more: cutting winners or holding losers?",
+   "hashtags": [
+    "#tradingpsychology",
+    "#riskmanagement",
+    "#tradingdiscipline",
+    "#tradingeducation",
+    "#stockmarketindia"
+   ]
+  },
+  {
+   "id": "34-real-returns",
+   "pillar": "Fundamentals",
+   "label": "Lesson 34 · Fundamentals",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Inflation",
+     "title": "₹1 lakh growing to ₹3.87 lakh can buy only **₹1.21 lakh** of today's goods.",
+     "sub": "Why real returns matter more than the headline number."
+    },
+    {
+     "type": "formula",
+     "title": "Real return",
+     "formula": "Real return =\n(1 + nominal) ÷ (1 + inflation) − 1",
+     "body": "Example: a 7% return with 6% inflation.\n1.07 ÷ 1.06 − 1 = **0.94%** a year in real terms, not 1%, and far from 7%."
+    },
+    {
+     "type": "chart",
+     "title": "Same money, two views",
+     "body": "After 20 years the account shows about ₹3.87 lakh. In today's prices, that buys what about ₹1.21 lakh buys now.",
+     "chart": {
+      "kind": "line",
+      "title": "Value of ₹1,00,000 (₹ thousand)",
+      "x": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20
+      ],
+      "series": [
+       {
+        "name": "Nominal, 7% a year",
+        "values": [
+         100.0,
+         107.0,
+         114.5,
+         122.5,
+         131.1,
+         140.3,
+         150.1,
+         160.6,
+         171.8,
+         183.8,
+         196.7,
+         210.5,
+         225.2,
+         241.0,
+         257.9,
+         275.9,
+         295.2,
+         315.9,
+         338.0,
+         361.7,
+         387.0
+        ]
+       },
+       {
+        "name": "Real, after 6% inflation",
+        "values": [
+         100.0,
+         100.9,
+         101.9,
+         102.9,
+         103.8,
+         104.8,
+         105.8,
+         106.8,
+         107.8,
+         108.8,
+         109.8,
+         110.9,
+         111.9,
+         113.0,
+         114.0,
+         115.1,
+         116.2,
+         117.3,
+         118.4,
+         119.5,
+         120.7
+        ],
+        "focus": true
+       }
+      ],
+      "y_format": "{:.0f}",
+      "x_label": "Years",
+      "x_ticks": [
+       0,
+       5,
+       10,
+       15,
+       20
+      ],
+      "area": false,
+      "points": [
+       {
+        "series": 0,
+        "x": 20,
+        "label": "₹3.87L",
+        "dx": -130,
+        "dy": -10
+       },
+       {
+        "series": 1,
+        "x": 20,
+        "label": "₹1.21L",
+        "dx": -130,
+        "dy": -40
+       }
+      ]
+     },
+     "note": "Illustrative math with assumed rates, not market data."
+    },
+    {
+     "type": "checklist",
+     "title": "What to take from this",
+     "items": [
+      "Always compare returns after inflation, not before.",
+      "A small gap between return and inflation grows slowly.",
+      "Costs and taxes come out of that small real return too.",
+      "Ask what money will buy, not just how big the number is."
+     ]
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "₹1,00,000 growing at 7% a year becomes about ₹3,86,968 in 20 years. Looks great.\n\nNow add 6% inflation. In today's prices, that money buys only what about ₹1,20,659 buys now.\n\nThe real return is (1.07 ÷ 1.06) − 1 = 0.94% a year. Not 7%. Not even 1%.\n\nThat's why the headline number can mislead. What matters is the gap between your return and inflation, after costs and taxes.\n\nThe rates here are assumptions for the math, not a forecast or a recommendation.\n\nDid you know your real return before reading this? Save it for later.",
+   "hashtags": [
+    "#inflation",
+    "#personalfinance",
+    "#compounding",
+    "#financialliteracy",
     "#tradingeducation"
    ]
   }

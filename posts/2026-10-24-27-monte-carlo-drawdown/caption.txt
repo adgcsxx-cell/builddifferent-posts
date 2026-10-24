@@ -1,0 +1,13 @@
+Your backtest says the worst drawdown was 9R. Should you plan for 9R?
+
+We took 100 trades (45 wins of +1.5R, 55 losses of −1R) and shuffled their order 20,000 times. Every version ends with exactly the same profit: +12.5R.
+
+But the worst drawdown ranged from 3.5R to 24R. One order in 20 hit 14.5R or worse.
+
+The order of wins and losses is luck, and your backtest shows you just one order. Size for the bad-luck version, not the lucky one.
+
+(R = amount risked per trade. Simulation, not real trades.)
+
+Education only, not investment advice. Not SEBI-registered.
+
+#montecarlo #backtesting #riskmanagement #systematictrading #quanttrading
