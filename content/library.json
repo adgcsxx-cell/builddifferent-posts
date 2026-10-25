@@ -6070,8 +6070,8 @@
          "Large"
         ]
        ],
-       "result": "Wins less often",
-       "result_label": "Typically",
+       "result": "Lower",
+       "result_label": "Win rate, typically",
        "pill": "Pays for time",
        "good": false,
        "neutral": true
@@ -6092,8 +6092,8 @@
          "Large, unless hedged"
         ]
        ],
-       "result": "Wins more often",
-       "result_label": "Typically",
+       "result": "Higher",
+       "result_label": "Win rate, typically",
        "pill": "Paid to take risk",
        "good": false,
        "neutral": true
