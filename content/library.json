@@ -6624,6 +6624,176 @@
     "#financialliteracy",
     "#tradingeducation"
    ]
+  },
+  {
+   "id": "35-leverage-math",
+   "pillar": "Risk",
+   "label": "Lesson 35 · Risk",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Leverage",
+     "title": "At **10x** leverage, a **10%** move against you wipes out your whole margin.",
+     "sub": "The simple math behind leverage."
+    },
+    {
+     "type": "formula",
+     "title": "How leverage scales a loss",
+     "formula": "Loss on margin =\nPrice move × Leverage",
+     "body": "Example: ₹1,00,000 of margin controls a ₹5,00,000 position (5x).\nA 4% fall in price costs ₹20,000, which is **20%** of your margin."
+    },
+    {
+     "type": "chart",
+     "title": "Same 4% move, different leverage",
+     "body": "How much of your margin a 4% move against you takes.",
+     "chart": {
+      "kind": "bar",
+      "title": "Loss on margin from a 4% move",
+      "categories": [
+       "1x",
+       "2x",
+       "5x",
+       "10x",
+       "20x"
+      ],
+      "values": [
+       4,
+       8,
+       20,
+       40,
+       80
+      ],
+      "value_format": "{:.0f}%",
+      "highlight": [
+       3
+      ],
+      "x_label": "Leverage"
+     },
+     "note": "Math, before costs and interest. Not market data."
+    },
+    {
+     "type": "chart",
+     "title": "How far price must move to wipe you out",
+     "body": "The move against you that loses 100% of the margin is 100% divided by the leverage.",
+     "chart": {
+      "kind": "bar",
+      "title": "Move that wipes out the margin",
+      "categories": [
+       "1x",
+       "2x",
+       "5x",
+       "10x",
+       "20x"
+      ],
+      "values": [
+       100.0,
+       50.0,
+       20.0,
+       10.0,
+       5.0
+      ],
+      "value_format": "{:.0f}%",
+      "highlight": [
+       3
+      ],
+      "x_label": "Leverage"
+     },
+     "note": "Math, before costs and interest. Not market data."
+    },
+    {
+     "type": "text",
+     "title": "Leverage doesn't change the odds",
+     "body": "It doesn't make a setup any better. It makes every outcome bigger, the bad ones too.\n- Losses grow exactly as fast as gains.\n- An ordinary pullback can force you out before your idea plays out.\n- If margin runs short, the broker can close your position for you.",
+     "callout": "Size from your stop and risk %, not from how much leverage is on offer."
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "Leverage feels like free extra buying power. The math says otherwise.\n\nLoss on your margin = price move × leverage.\n\nA 4% move against you costs:\n→ 1x: 4% of your margin\n→ 2x: 8%\n→ 5x: 20%\n→ 10x: 40%\n→ 20x: 80%\n\nAnd the move that wipes out your margin completely is 100% ÷ leverage. At 10x that's just a 10% move. At 20x, 5%.\n\nLeverage doesn't improve a setup. It only makes every result bigger, including the losses, and it shrinks the room your trade has to breathe.\n\nWork out your size from your stop and your risk per trade, not from how much leverage the broker allows.\n\n(Illustrative math, not a recommendation.)",
+   "hashtags": [
+    "#leverage",
+    "#riskmanagement",
+    "#positionsizing",
+    "#tradingeducation",
+    "#stockmarketindia"
+   ]
+  },
+  {
+   "id": "36-profit-factor",
+   "pillar": "Systems",
+   "label": "Lesson 36 · Systems",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Backtest metrics",
+     "title": "Profit factor **1.5** means every ₹1 lost brought back **₹1.50**.",
+     "sub": "One number to check whether wins outweigh losses."
+    },
+    {
+     "type": "formula",
+     "title": "Profit factor",
+     "formula": "Profit factor =\nGross profit ÷ Gross loss",
+     "body": "Example: 100 trades. 45 winners average ₹1,500, 55 losers average ₹1,000.\n₹67,500 ÷ ₹55,000 = **1.23**. Above 1 makes money, below 1 loses it."
+    },
+    {
+     "type": "chart",
+     "title": "Win rate moves it fast",
+     "body": "Profit factor when winners are 1.5x the size of losers.",
+     "chart": {
+      "kind": "bar",
+      "title": "Profit factor by win rate",
+      "categories": [
+       "35%",
+       "40%",
+       "45%",
+       "50%",
+       "55%"
+      ],
+      "values": [
+       0.81,
+       1.0,
+       1.23,
+       1.5,
+       1.83
+      ],
+      "value_format": "{:.2f}",
+      "highlight": [
+       1
+      ],
+      "x_label": "Win rate"
+     },
+     "note": "Math: profit factor = (win rate × 1.5) ÷ loss rate. Before costs."
+    },
+    {
+     "type": "stat",
+     "kicker": "Costs come out first",
+     "value": "1.04",
+     "label": "Same trades with ₹100 of costs each: profit factor falls from 1.23 to 1.04.",
+     "body": "Costs shrink every winner and grow every loser, so a thin edge can vanish."
+    },
+    {
+     "type": "checklist",
+     "title": "Read profit factor with care",
+     "items": [
+      "Check it after costs, not before.",
+      "Look at the trade count: 30 trades prove little.",
+      "A very high number in a backtest can mean overfitting.",
+      "Read it next to the max drawdown, never on its own."
+     ]
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "Profit factor is one of the simplest backtest numbers: gross profit ÷ gross loss.\n\nExample: 100 trades, 45 winners averaging ₹1,500 and 55 losers averaging ₹1,000.\n→ Gross profit: ₹67,500\n→ Gross loss: ₹55,000\n→ Profit factor: 1.23\n\nAbove 1, the system makes money. Below 1, it loses.\n\nNow add ₹100 of costs to every trade. Winners shrink to ₹1,400, losers grow to ₹1,100, and the profit factor drops to 1.04. Almost nothing left.\n\nSo always read it after costs, with enough trades, and next to the drawdown.\n\n(Illustrative math, not real results.)\n\nDo you check profit factor in your backtests?",
+   "hashtags": [
+    "#backtesting",
+    "#systematictrading",
+    "#tradingsystem",
+    "#algotrading",
+    "#tradingeducation"
+   ]
   }
  ]
 }

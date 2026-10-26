@@ -1,0 +1,17 @@
+Want to grow faster? Just risk more per trade, right?
+
+We simulated one strategy (45% win rate, winners 1.5× the size of losers) for 200 trades, 20,000 times, at different risk levels. Typical worst drawdown:
+→ 0.5% risk: ~6%
+→ 1% risk: ~12%
+→ 2% risk: ~22%
+→ 5% risk: ~49%
+
+In the unlucky 1-in-20 runs, 5% risk meant a drawdown of 73%.
+
+Bigger size only speeds up growth if you survive the drawdowns. Pick your risk per trade from the drawdown you can actually live with, emotionally and financially.
+
+(Simulation, not real results.)
+
+Education only, not investment advice. Not SEBI-registered.
+
+#riskmanagement #positionsizing #montecarlo #systematictrading #tradingeducation
