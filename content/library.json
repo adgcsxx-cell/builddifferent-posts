@@ -4608,7 +4608,31 @@
     "#systematictrading",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Losing streaks · Part 1",
+    "hook": "A **60%** win rate still has a **46%** chance of 5 losses in a row.",
+    "chart_slide": 2,
+    "scenes": [
+     {
+      "kicker": "5+ losses in a row, 100 trades",
+      "lines": [
+       "40% win rate: **98%**",
+       "50% win rate: **81%**",
+       "60% win rate: **46%**"
+      ]
+     },
+     {
+      "big": [
+       "Streaks are normal.",
+       "Plan for them **before** they arrive."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "27-monte-carlo-drawdown",
+    "next_title": "How deep your drawdown could really go"
+   }
   },
   {
    "id": "19-walk-forward",
@@ -6037,7 +6061,29 @@
     "#riskmanagement",
     "#systematictrading",
     "#quanttrading"
-   ]
+   ],
+   "reel": {
+    "kicker": "Losing streaks · Part 2",
+    "hook": "Same 100 trades, same profit, and a drawdown anywhere from **3.5R to 24R**.",
+    "chart_slide": 2,
+    "scenes": [
+     {
+      "kicker": "20,000 shuffles, simulated",
+      "lines": [
+       "45 wins (+1.5R), 55 losses (−1R)",
+       "Every order ends at **+12.5R**",
+       "1 in 20: **14.5R** or deeper"
+      ]
+     },
+     {
+      "big": [
+       "Plan for the **bad-luck** drawdown, not your backtest's."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "18-losing-streaks"
+   }
   },
   {
    "id": "28-buyer-vs-seller",
