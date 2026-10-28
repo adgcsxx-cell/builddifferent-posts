@@ -1,0 +1,14 @@
+Why did your call lose money when the market went up? The Greeks can tell you.
+
+→ Delta: how much the option moves for a 1-point move in the underlying
+→ Gamma: how fast delta changes (biggest near the strike and near expiry)
+→ Theta: the value lost each day to time decay
+→ Vega: the change in price for a 1-point change in implied volatility
+
+They all act at the same time. A small price gain can be wiped out by theta or a drop in IV.
+
+Save this cheat sheet for the next time an option price surprises you.
+
+Education only, not investment advice. Not SEBI-registered.
+
+#optionsgreeks #optionstrading #optionsbasics #tradingeducation #stockmarketindia

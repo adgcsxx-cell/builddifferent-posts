@@ -6840,6 +6840,154 @@
     "#algotrading",
     "#tradingeducation"
    ]
+  },
+  {
+   "id": "37-rule-of-16",
+   "pillar": "Options",
+   "label": "Lesson 37 · Options",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Options math",
+     "title": "Divide IV by **16** to get the market's expected **daily** move.",
+     "sub": "A quick way to read implied volatility."
+    },
+    {
+     "type": "formula",
+     "title": "The rule of 16",
+     "formula": "Daily move ≈\nIV ÷ 16",
+     "body": "Why 16? A year has about 252 trading days, and the square root of 252 is about 15.9.\nExample: an IV of **16%** prices a typical daily move of about **1%**."
+    },
+    {
+     "type": "chart",
+     "title": "Higher IV, bigger expected moves",
+     "body": "Typical daily move priced in at each level of implied volatility.",
+     "chart": {
+      "kind": "bar",
+      "title": "Expected daily move by IV",
+      "categories": [
+       "10%",
+       "12%",
+       "16%",
+       "20%",
+       "24%",
+       "32%"
+      ],
+      "values": [
+       0.63,
+       0.76,
+       1.01,
+       1.26,
+       1.51,
+       2.02
+      ],
+      "value_format": "{:.2f}%",
+      "highlight": [
+       2
+      ],
+      "x_label": "Implied volatility (yearly)"
+     },
+     "note": "Math: IV ÷ 15.87 (square root of 252 trading days). One standard deviation."
+    },
+    {
+     "type": "text",
+     "title": "Scale it to any horizon",
+     "body": "At an IV of 16%:\n- 1 day: about **1.0%**\n- 1 week (5 days): about **2.3%**\n- 1 month (21 days): about **4.6%**\nMultiply IV by the square root of (days ÷ 252).",
+     "callout": "Moves grow with the square root of time, not in a straight line."
+    },
+    {
+     "type": "text",
+     "title": "What it does and doesn't tell you",
+     "body": "- It's one standard deviation: roughly 2 days in 3 should move less, if the model holds.\n- Real markets have fat tails: big moves come more often than the bell curve says.\n- It's the size of move being priced, not a forecast of direction.",
+     "callout": "IV tells you how much, never which way."
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "Implied volatility is quoted as a yearly number. That makes it hard to feel. The rule of 16 fixes that.\n\nDivide IV by 16 to get the typical daily move the market is pricing in. Why 16? There are about 252 trading days in a year, and the square root of 252 is about 15.9.\n\n→ IV 16%: about 1% a day\n→ IV 32%: about 2% a day\n→ One week at IV 16%: about 2.3%\n→ One month at IV 16%: about 4.6%\n\nExample: an index at 20,000 with IV of 16% is pricing a typical day of about 200 points.\n\nTwo warnings: it's one standard deviation, so bigger days still happen (markets have fat tails), and it says nothing about direction.\n\n(Illustrative math, not a forecast.)\n\nDid you know this shortcut?",
+   "hashtags": [
+    "#impliedvolatility",
+    "#optionstrading",
+    "#optionsbasics",
+    "#tradingeducation",
+    "#stockmarketindia"
+   ]
+  },
+  {
+   "id": "38-winning-streaks",
+   "pillar": "Psychology",
+   "label": "Lesson 38 · Psychology",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Trading psychology",
+     "title": "A trader with **zero** edge gets 5 wins in a row **81%** of the time.",
+     "sub": "Over just 100 trades. Streaks feel like skill. Often they're chance."
+    },
+    {
+     "type": "chart",
+     "title": "Streaks are normal, even with no edge",
+     "body": "Chance of at least one winning streak in 100 trades with a 50% win rate.",
+     "chart": {
+      "kind": "bar",
+      "title": "Chance of a streak in 100 trades",
+      "categories": [
+       "4",
+       "5",
+       "6",
+       "7",
+       "8"
+      ],
+      "values": [
+       97.3,
+       81.0,
+       54.6,
+       31.8,
+       17.0
+      ],
+      "value_format": "{:.0f}%",
+      "highlight": [
+       1
+      ],
+      "x_label": "Wins in a row"
+     },
+     "note": "Math: exact probability, 100 trades, 50% win rate, zero edge."
+    },
+    {
+     "type": "text",
+     "title": "What a hot streak does to you",
+     "body": "- You feel you've figured the market out.\n- You size up right when the luck is likely to even out.\n- A normal losing run then lands on your biggest positions.",
+     "callout": "Size up because of data, not a feeling."
+    },
+    {
+     "type": "stat",
+     "value": "25%",
+     "label": "chance of a 5-win streak in only 20 trades, with zero edge.",
+     "body": "Short samples are full of streaks. Judge a system on 100+ trades, not the last few."
+    },
+    {
+     "type": "checklist",
+     "title": "After a winning streak",
+     "items": [
+      "Keep your risk per trade the same.",
+      "Check you followed your rules, not just that you won.",
+      "Compare the streak with your backtest: is it normal?",
+      "Change size only on a set schedule, based on account size."
+     ]
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "Five wins in a row feels like proof. It usually isn't.\n\nTake a trader with no edge at all: a 50% win rate, like a coin flip. Over 100 trades, the chance of at least one 5-win streak is about 81%. A 6-win streak: about 55%. Even over just 20 trades, a 5-win streak shows up about 25% of the time.\n\nThe danger isn't the streak. It's what we do next: we feel skilled, size up, and a perfectly normal losing run lands on the biggest positions.\n\nKeep your risk per trade the same after wins, and judge your system on a large sample.\n\n(Probability math, not real results.)\n\nHave you ever sized up after a hot streak?",
+   "hashtags": [
+    "#tradingpsychology",
+    "#riskmanagement",
+    "#tradingdiscipline",
+    "#tradingeducation",
+    "#stockmarketindia"
+   ]
   }
  ]
 }
