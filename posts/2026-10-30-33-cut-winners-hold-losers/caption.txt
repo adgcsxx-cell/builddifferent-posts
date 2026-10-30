@@ -1,0 +1,15 @@
+Two traders take the exact same trades. Both win 50% of the time.
+
+One follows the plan: wins average ₹2,000, losses ₹1,000. That's +₹500 per trade on average.
+
+The other books profits early and gives losers "one more day": wins shrink to ₹1,000, losses grow to ₹1,500. That's −₹250 per trade.
+
+Same entries. The only difference is when they exit.
+
+This is the disposition effect: closing a winner feels good, closing a loser feels like admitting a mistake. Rules set before the trade are how you beat it.
+
+Which one do you struggle with more: cutting winners or holding losers?
+
+Education only, not investment advice. Not SEBI-registered.
+
+#tradingpsychology #riskmanagement #tradingdiscipline #tradingeducation #stockmarketindia

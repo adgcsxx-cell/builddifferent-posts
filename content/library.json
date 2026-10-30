@@ -6465,7 +6465,7 @@
        "good": true
       },
       {
-       "name": "Cut winners, hold losers",
+       "name": "Exiting on feelings",
        "rows": [
         [
          "Win rate",
@@ -6985,6 +6985,199 @@
     "#tradingpsychology",
     "#riskmanagement",
     "#tradingdiscipline",
+    "#tradingeducation",
+    "#stockmarketindia"
+   ]
+  },
+  {
+   "id": "39-rule-of-72",
+   "pillar": "Fundamentals",
+   "label": "Lesson 39 · Fundamentals",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Compounding",
+     "title": "At **6%** inflation, prices double in about **12 years**.",
+     "sub": "The rule of 72: a quick way to see compounding in your head."
+    },
+    {
+     "type": "formula",
+     "title": "The rule of 72",
+     "formula": "Years to double\n= 72 ÷ yearly rate (%)",
+     "body": "Example: 72 ÷ 6 = **12 years**.\nThe exact answer is ln 2 ÷ ln 1.06 = **11.9 years**. Close enough to do in your head."
+    },
+    {
+     "type": "chart",
+     "title": "How close is the shortcut?",
+     "body": "Exact years to double at each yearly rate. The rule of 72 lands within half a year for all of these.",
+     "chart": {
+      "kind": "bar",
+      "title": "Exact years to double",
+      "categories": [
+       "4%",
+       "6%",
+       "8%",
+       "10%",
+       "12%",
+       "18%"
+      ],
+      "values": [
+       17.7,
+       11.9,
+       9.0,
+       7.3,
+       6.1,
+       4.2
+      ],
+      "value_format": "{:.1f}",
+      "highlight": [
+       1
+      ],
+      "x_label": "Yearly rate",
+      "label_all": true
+     },
+     "note": "Math: exact doubling time ln 2 ÷ ln(1 + rate). Not market data."
+    },
+    {
+     "type": "text",
+     "title": "It works both ways",
+     "body": "- Growth: money compounding at 8% a year doubles in about 9 years.\n- Inflation: at 6% a year, ₹1,00,000 buys only about **₹49,697** worth of today's goods after 12 years.\n- Costs: a 2% yearly fee compounds too. It quietly takes a bigger share over time.",
+     "callout": "Small yearly rates make big changes over long periods."
+    },
+    {
+     "type": "checklist",
+     "title": "Use it to check",
+     "items": [
+      "How long inflation takes to halve your money's value.",
+      "Whether a promised return sounds realistic.",
+      "How much a yearly fee really costs over decades.",
+      "Why starting early matters more than you think."
+     ]
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "Want to know how fast something doubles? Divide 72 by the yearly rate.\n\nAt 6% a year: 72 ÷ 6 = 12 years. The exact answer is 11.9 years. At 8%: about 9 years. At 12%: about 6.\n\nIt works for anything that compounds, including the things working against you. At 6% inflation, prices double in about 12 years, so ₹1,00,000 then buys what about ₹49,700 buys today.\n\nUse it as a quick sense check: on inflation, on fees, and on any return that sounds too good to be true.\n\n(Rates here are assumptions for the math, not forecasts or recommendations.)\n\nDid you know this shortcut? Save it for later.",
+   "hashtags": [
+    "#compounding",
+    "#inflation",
+    "#financialliteracy",
+    "#personalfinance",
+    "#tradingeducation"
+   ]
+  },
+  {
+   "id": "40-correlated-positions",
+   "pillar": "Risk",
+   "label": "Lesson 40 · Risk",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Risk management",
+     "title": "Five trades at 1% risk can be **one 5% bet**.",
+     "sub": "When positions move together, your risk adds up."
+    },
+    {
+     "type": "chart",
+     "title": "If the 5 trades are independent",
+     "body": "Each has a 50% chance of hitting its stop. Losing on all five at once is rare.",
+     "chart": {
+      "kind": "bar",
+      "title": "Chance of how many stops get hit",
+      "categories": [
+       "0",
+       "1",
+       "2",
+       "3",
+       "4",
+       "5"
+      ],
+      "values": [
+       3.1,
+       15.6,
+       31.2,
+       31.2,
+       15.6,
+       3.1
+      ],
+      "value_format": "{:.0f}%",
+      "highlight": [
+       5
+      ],
+      "x_label": "Stops hit out of 5",
+      "label_all": true
+     },
+     "note": "Math: binomial probability, 5 independent trades, 50% each. Not real results."
+    },
+    {
+     "type": "compare",
+     "title": "Same 5 trades, two cases",
+     "cards": [
+      {
+       "name": "Independent",
+       "rows": [
+        [
+         "Risk per trade",
+         "1%"
+        ],
+        [
+         "Trades",
+         "5"
+        ],
+        [
+         "Move together?",
+         "No"
+        ]
+       ],
+       "result": "3%",
+       "result_label": "chance of losing the full 5%",
+       "pill": "Spread out",
+       "good": true
+      },
+      {
+       "name": "Fully correlated",
+       "rows": [
+        [
+         "Risk per trade",
+         "1%"
+        ],
+        [
+         "Trades",
+         "5"
+        ],
+        [
+         "Move together?",
+         "Yes"
+        ]
+       ],
+       "result": "50%",
+       "result_label": "chance of losing the full 5%",
+       "pill": "One big bet",
+       "good": false
+      }
+     ],
+     "body": "Five bank stocks, or five bullish trades on the same index, often behave like **one position**."
+    },
+    {
+     "type": "checklist",
+     "title": "Before adding a position",
+     "items": [
+      "Does it depend on the same sector or index?",
+      "Would the same news hurt all my trades?",
+      "Count related trades as one risk bucket.",
+      "Set a limit for the whole bucket, not just each trade."
+     ]
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "Risking 1% per trade feels safe. But what if all your trades are really the same trade?\n\nTake 5 trades, each risking 1%, each with a 50% chance of hitting its stop. If they're independent, the chance all 5 lose together is about 3%.\n\nIf they move together (five bank stocks, or five bullish bets on one index), they win or lose as one. Now the chance of losing the full 5% is 50%.\n\nYour risk isn't just per trade. It's per idea. Group related positions and set a limit for the whole group.\n\n(Probability math with assumed numbers, not real results.)\n\nHow many of your open trades depend on the same thing?",
+   "hashtags": [
+    "#riskmanagement",
+    "#positionsizing",
+    "#tradingrules",
     "#tradingeducation",
     "#stockmarketindia"
    ]
