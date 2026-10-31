@@ -1,6 +1,10 @@
 # Daily posting runbook (@builddifferent.trading)
 
-One carousel per day at about 7:20 PM IST. Everything a fresh session needs is in this repository.
+Posting mix (changed 31 Oct 2026, because Reels reach far more people than carousels on this page):
+- **Reels: Monday to Saturday around 12:55 PM IST** (see "Reels" below).
+- **Carousels: Wednesday and Sunday around 7:20 PM IST** (the daily steps below).
+
+Everything a fresh session needs is in this repository.
 
 ## Daily steps
 
@@ -22,7 +26,7 @@ One carousel per day at about 7:20 PM IST. Everything a fresh session needs is i
 8. `python3 build.py mark <id> --date <date> --dir <folder> --result "<post URL or result>"`, commit and push.
 9. Report: one line with the lesson title and the post link.
 
-## Reels (Tue, Thu, Sat around 12:55 PM IST)
+## Reels (Monday to Saturday around 12:55 PM IST)
 
 A Reel is a 12-18 second video with one idea: a full-screen hook with the lesson's chart drawing itself in,
 one or two short text beats, and a follow ending, over original generated sound. It is built from the lesson's
@@ -35,7 +39,10 @@ one or two short text beats, and a follow ending, over original generated sound.
    `content/library.json` following the schema (hook from the cover title, the lesson's chart, one or two beats
    using the lesson's own numbers; make it part 1 of a pair with a natural follow-up lesson when one fits, and give
    that lesson a part 2 script too). Run `python3 build.py check` until it reports 0 problems.
-   Keep at least 4 unused scripts ahead (`unused_reel_scripts`); write more when it drops below that.
+   Keep at least 8 unused scripts ahead (`unused_reel_scripts`); write more when it drops below that.
+   Reels can use lessons that are not yet carousels (`reel_candidate` falls back to the library). When
+   `lessons_without_reel` drops below 10, write new full lessons (carousel spec plus reel script) following
+   `content/SCHEMA.md` and append them to `content/library.json`.
 3. `python3 build.py reel --date <today in IST>`. It refuses if `content/reels.json` already has a Reel for today
    (never post two). It writes `reels/<date>-<id>.mp4` and prints the id, file, public URL, length, spec problems
    and caption. Exit code 4 means the video failed the Instagram spec check: stop and report.

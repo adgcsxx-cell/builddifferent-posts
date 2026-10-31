@@ -245,7 +245,8 @@ def reel_candidate(today, reels, posted, lib, want_id=None):
     1. `want_id` if given.
     2. Part 2 of a pair: if the last Reel's script names a `next` lesson that has no Reel yet.
     3. An approved, unused meme (content/memes.json), when the last Reel was not a meme.
-    4. Otherwise the oldest carousel posted before today that has no Reel yet."""
+    4. Otherwise the oldest carousel posted before today that has no Reel yet.
+    5. Otherwise the earliest unposted library lesson with a reel script."""
     have = {r["id"] for r in reels}
     memes = memes_by_id()
     if want_id:
@@ -262,6 +263,12 @@ def reel_candidate(today, reels, posted, lib, want_id=None):
     for p in posted:
         if p.get("dir") not in (None, "", "manual") and p["date"] < today and p["id"] not in have:
             return p["id"]
+    # 5. Reels now run more often than carousels: fall back to the earliest library lesson
+    #    (not yet a carousel) that has a reel script and no Reel yet.
+    done = {p["id"] for p in posted}
+    for lid, post in lib.items():
+        if lid not in have and lid not in done and post.get("reel"):
+            return lid
     return None
 
 
@@ -459,6 +466,7 @@ def cmd_status(_):
                       "reels_posted": len(reels), "next_reel": nxt,
                       "next_reel_has_script": bool(nxt and (nxt in memes_by_id() or lib_by_id[nxt].get("reel"))),
                       "unused_reel_scripts": len(scripted),
+                      "lessons_without_reel": sum(1 for p in lib["posts"] if p["id"] not in {r["id"] for r in reels}),
                       "unused_memes_approved": sum(1 for k in memes_by_id(True) if k not in {r["id"] for r in reels}),
                       "memes_waiting_for_approval": [k for k, m in memes_by_id().items() if not m.get("approved")]},
                      indent=1))
