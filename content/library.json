@@ -5105,7 +5105,28 @@
     "#stoploss",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Stop-losses · Part 2",
+    "hook": "How many shares should you buy? Your **stop-loss** decides.",
+    "scenes": [
+     {
+      "kicker": "Risking ₹10,000 every time",
+      "lines": [
+       "Stop ₹10 away: **1,000** shares",
+       "Stop ₹20 away: **500** shares",
+       "Stop ₹50 away: **200** shares"
+      ]
+     },
+     {
+      "big": [
+       "A wider stop means a **smaller** position, not a bigger risk."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "26-stop-placement"
+   }
   },
   {
    "id": "23-backtest-biases",
@@ -5984,7 +6005,33 @@
     "#technicalanalysis",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Stop-losses · Part 1",
+    "hook": "Put your stop where your idea is **wrong**, not where the pain starts.",
+    "chart_slide": 2,
+    "chart_kicker": "Synthetic chart",
+    "scenes": [
+     {
+      "kicker": "Two ways to set a stop",
+      "lines": [
+       "Pain stop: exit at −₹5,000",
+       "It sits in random **noise**",
+       "Logic stop: below the **floor**",
+       "Floor breaks: idea is wrong"
+      ]
+     },
+     {
+      "big": [
+       "Stop first.",
+       "Then **size** the position."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "22-position-size-formula",
+    "next_title": "How many shares to buy once your stop is set"
+   }
   },
   {
    "id": "27-monte-carlo-drawdown",
