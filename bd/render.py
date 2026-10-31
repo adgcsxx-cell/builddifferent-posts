@@ -1060,6 +1060,7 @@ def render_post(post, out_dir):
 
 def caption_text(post):
     parts = [post["caption"].strip()]
+    parts.append("Free position-sizing worksheet + every lesson on Telegram: t.me/builddifferenttrading")
     parts.append("Education only, not investment advice. Not SEBI-registered.")
     tags = post.get("hashtags", [])[:5]
     if tags:

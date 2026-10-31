@@ -23,8 +23,12 @@ Everything a fresh session needs is in this repository.
    (tool `instagram_for_business_publish_photo_s`) with
    `instagramPageId` = value in `content/config.json`, `media` = the URL list in slide order,
    `caption` = the printed caption. Publish once; if the call errors, do not retry blindly: check the profile first.
-8. `python3 build.py mark <id> --date <date> --dir <folder> --result "<post URL or result>"`, commit and push.
-9. Report: one line with the lesson title and the post link.
+8. Share to Telegram (carousel days only): Zapier app `TelegramCLIAPI`, action `send_photo`
+   (tool `telegram_send_photo`) with `chat_id` = `telegram_channel` from `content/config.json`, `photo` = the slide 1
+   URL, `caption` = the lesson title, one or two lines from the caption, the Instagram post link and the disclaimer
+   line. Once only; a Telegram failure never blocks marking the Instagram post.
+9. `python3 build.py mark <id> --date <date> --dir <folder> --result "<post URL or result>"`, commit and push.
+10. Report: one line with the lesson title and the post link.
 
 ## Reels (Monday to Saturday around 12:55 PM IST)
 
