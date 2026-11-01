@@ -1,0 +1,24 @@
+Leverage feels like free extra buying power. The math says otherwise.
+
+Loss on your margin = price move × leverage.
+
+A 4% move against you costs:
+→ 1x: 4% of your margin
+→ 2x: 8%
+→ 5x: 20%
+→ 10x: 40%
+→ 20x: 80%
+
+And the move that wipes out your margin completely is 100% ÷ leverage. At 10x that's just a 10% move. At 20x, 5%.
+
+Leverage doesn't improve a setup. It only makes every result bigger, including the losses, and it shrinks the room your trade has to breathe.
+
+Work out your size from your stop and your risk per trade, not from how much leverage the broker allows.
+
+(Illustrative math, not a recommendation.)
+
+Free position-sizing worksheet + every lesson on Telegram: t.me/builddifferenttrading
+
+Education only, not investment advice. Not SEBI-registered.
+
+#leverage #riskmanagement #positionsizing #tradingeducation #stockmarketindia

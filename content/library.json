@@ -7228,6 +7228,483 @@
     "#tradingeducation",
     "#stockmarketindia"
    ]
+  },
+  {
+   "id": "41-trend-vs-mean-reversion",
+   "pillar": "Systems",
+   "label": "Lesson 41 · Systems",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Trading systems",
+     "title": "A **35%** win rate can beat a **70%** win rate.",
+     "sub": "Two system styles, and why the right one is the one you can stick with."
+    },
+    {
+     "type": "compare",
+     "title": "Two styles, same 100 trades",
+     "cards": [
+      {
+       "name": "Trend following",
+       "rows": [
+        [
+         "Win rate",
+         "35%"
+        ],
+        [
+         "Average win",
+         "3R"
+        ],
+        [
+         "Average loss",
+         "1R"
+        ]
+       ],
+       "result": "+0.40R",
+       "result_label": "expected per trade",
+       "pill": "Rare, big wins",
+       "good": true
+      },
+      {
+       "name": "Mean reversion",
+       "rows": [
+        [
+         "Win rate",
+         "70%"
+        ],
+        [
+         "Average win",
+         "0.8R"
+        ],
+        [
+         "Average loss",
+         "1.2R"
+        ]
+       ],
+       "result": "+0.20R",
+       "result_label": "expected per trade",
+       "pill": "Often, small wins",
+       "neutral": true
+      }
+     ],
+     "body": "Expectancy = win rate × average win − loss rate × average loss. Over 100 trades: about **+40R** vs **+20R**."
+    },
+    {
+     "type": "chart",
+     "title": "The price: losing streaks",
+     "body": "Chance of at least one losing streak this long somewhere in 100 trades.",
+     "chart": {
+      "kind": "line",
+      "title": "Chance of a streak in 100 trades",
+      "x": [
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10
+      ],
+      "series": [
+       {
+        "name": "Trend (35% wins)",
+        "values": [
+         100.0,
+         100.0,
+         99.5,
+         95.7,
+         85.0,
+         69.0,
+         51.8,
+         36.8
+        ],
+        "focus": true
+       },
+       {
+        "name": "Mean rev. (70% wins)",
+        "values": [
+         86.4,
+         43.3,
+         15.3,
+         4.8,
+         1.4,
+         0.4,
+         0.1,
+         0.0
+        ]
+       }
+      ],
+      "y_format": "{:.0f}%",
+      "y_ticks": [
+       0,
+       25,
+       50,
+       75,
+       100
+      ],
+      "x_ticks": [
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10
+      ],
+      "x_label": "Losses in a row",
+      "area": false,
+      "end_dots": false,
+      "points": [
+       {
+        "series": 0,
+        "x": 6,
+        "label": "96%",
+        "dx": -60,
+        "dy": -14
+       },
+       {
+        "series": 1,
+        "x": 6,
+        "label": "5%",
+        "dx": 14,
+        "dy": -14
+       }
+      ]
+     },
+     "note": "Math: streak odds for assumed win rates, 100 independent trades. Not real results."
+    },
+    {
+     "type": "checklist",
+     "title": "Pick the style you can follow",
+     "items": [
+      "Can you sit through **6 or more** losses in a row?",
+      "Can you accept a rare loss bigger than your usual win?",
+      "Do you judge a system by expectancy, not win rate?",
+      "Test either style on enough trades before trusting it."
+     ]
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "Which system is better: one that wins 35% of the time, or one that wins 70%?\n\nTrend following: 35% wins averaging 3R, losses of 1R. Expectancy is +0.40R per trade.\nMean reversion: 70% wins averaging 0.8R, losses of 1.2R. Expectancy is +0.20R per trade.\n\nOn these assumed numbers, the low win rate system makes about twice as much per trade. The catch is the ride. In 100 trades, the 35% system has about a 96% chance of hitting 6 or more losses in a row. The 70% system: about 5%.\n\nWin rate alone tells you little. Pick the style whose losing streaks you can actually sit through, or you'll abandon it at the worst time.\n\n(Assumed numbers and probability math, not real results.)\n\nWhich style suits you better?",
+   "hashtags": [
+    "#tradingsystems",
+    "#algotrading",
+    "#tradingpsychology",
+    "#tradingeducation",
+    "#stockmarketindia"
+   ],
+   "reel": {
+    "kicker": "Systems",
+    "hook": "A **35%** win rate can beat a **70%** win rate.",
+    "chart_slide": 3,
+    "chart_kicker": "Losing streaks",
+    "scenes": [
+     {
+      "kicker": "Expectancy",
+      "lines": [
+       "35% wins at 3R, losses 1R",
+       "Per trade: **+0.40R**",
+       "70% wins at 0.8R, losses 1.2R",
+       "Per trade: **+0.20R**"
+      ]
+     },
+     {
+      "big": [
+       "Win rate alone tells you **little**.",
+       "Pick the streaks you can **survive**."
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "42-bull-call-spread",
+   "pillar": "Options",
+   "label": "Lesson 42 · Options",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Option spreads",
+     "title": "A bull call spread cuts the cost from **5** to **3**.",
+     "sub": "Cheaper entry and a closer breakeven, in exchange for capped upside."
+    },
+    {
+     "type": "chart",
+     "title": "Long call vs bull call spread",
+     "body": "Illustrative: buy the 100 call for 5. The spread also sells the 110 call for 2, so it costs 3.",
+     "chart": {
+      "kind": "line",
+      "title": "Profit or loss per unit at expiry",
+      "x": [
+       85,
+       86,
+       87,
+       88,
+       89,
+       90,
+       91,
+       92,
+       93,
+       94,
+       95,
+       96,
+       97,
+       98,
+       99,
+       100,
+       101,
+       102,
+       103,
+       104,
+       105,
+       106,
+       107,
+       108,
+       109,
+       110,
+       111,
+       112,
+       113,
+       114,
+       115,
+       116,
+       117,
+       118,
+       119,
+       120,
+       121,
+       122,
+       123,
+       124,
+       125
+      ],
+      "series": [
+       {
+        "name": "Bull call spread",
+        "values": [
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -3.0,
+         -2.0,
+         -1.0,
+         0.0,
+         1.0,
+         2.0,
+         3.0,
+         4.0,
+         5.0,
+         6.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0,
+         7.0
+        ],
+        "focus": true
+       },
+       {
+        "name": "Long call",
+        "values": [
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -5.0,
+         -4.0,
+         -3.0,
+         -2.0,
+         -1.0,
+         0.0,
+         1.0,
+         2.0,
+         3.0,
+         4.0,
+         5.0,
+         6.0,
+         7.0,
+         8.0,
+         9.0,
+         10.0,
+         11.0,
+         12.0,
+         13.0,
+         14.0,
+         15.0,
+         16.0,
+         17.0,
+         18.0,
+         19.0,
+         20.0
+        ]
+       }
+      ],
+      "area": false,
+      "zero_line": true,
+      "y_format": "{:g}",
+      "y_ticks": [
+       -5,
+       0,
+       5,
+       10,
+       15,
+       20
+      ],
+      "x_label": "Price at expiry",
+      "x_ticks": [
+       85,
+       95,
+       105,
+       115,
+       125
+      ],
+      "end_dots": false,
+      "points": [
+       {
+        "series": 0,
+        "x": 118,
+        "label": "Capped at +7",
+        "dx": -90,
+        "dy": 26
+       },
+       {
+        "series": 0,
+        "x": 89,
+        "label": "Max loss −3",
+        "dx": 10,
+        "dy": -14
+       }
+      ]
+     },
+     "note": "Illustrative prices. Ignores costs and margin."
+    },
+    {
+     "type": "compare",
+     "title": "What the short call changes",
+     "cards": [
+      {
+       "name": "Long call",
+       "rows": [
+        [
+         "Cost",
+         "5"
+        ],
+        [
+         "Max loss",
+         "5"
+        ],
+        [
+         "Max profit",
+         "Unlimited"
+        ]
+       ],
+       "result": "105",
+       "result_label": "breakeven at expiry",
+       "pill": "Open upside",
+       "neutral": true
+      },
+      {
+       "name": "Bull call spread",
+       "rows": [
+        [
+         "Net cost",
+         "3"
+        ],
+        [
+         "Max loss",
+         "3"
+        ],
+        [
+         "Max profit",
+         "7"
+        ]
+       ],
+       "result": "103",
+       "result_label": "breakeven at expiry",
+       "pill": "Defined both ways",
+       "good": true
+      }
+     ],
+     "body": "Max profit = strike gap 10 − cost 3 = **7**. Above 110, the spread stops gaining."
+    },
+    {
+     "type": "text",
+     "title": "When each shape fits",
+     "body": "- Spread: you expect a moderate rise and want a lower cost and a closer breakeven.\n- Long call: you want room for a big move and accept paying more for it.\n- At 120 on expiry, the call shows +15 while the spread stays at **+7**.",
+     "callout": "Every spread trades some upside for a lower cost."
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "Buying a call can feel expensive. A bull call spread is one way to pay less, if you accept a ceiling.\n\nIllustrative example: buy the 100 call for 5. Breakeven at expiry is 105, upside is open, and the most you can lose is 5.\n\nNow also sell the 110 call for 2. Your net cost drops to 3, breakeven moves to 103, and the most you can lose is 3. The trade-off: profit is capped at 7 (the 10-point strike gap minus the 3 you paid). Above 110, the spread stops gaining.\n\nNeither shape is better. It depends on how big a move you expect and how much you want to pay for it.\n\n(Illustrative numbers. Ignores costs and margin. Not a recommendation.)\n\nHave you used spreads before?",
+   "hashtags": [
+    "#optionstrading",
+    "#optionsstrategies",
+    "#bullcallspread",
+    "#tradingeducation",
+    "#stockmarketindia"
+   ],
+   "reel": {
+    "kicker": "Options",
+    "hook": "A bull call spread cuts the cost from **5** to **3**.",
+    "chart_slide": 2,
+    "chart_kicker": "Payoff at expiry",
+    "scenes": [
+     {
+      "lines": [
+       "Buy the 100 call for 5",
+       "Sell the 110 call for 2",
+       "Net cost **3**, breakeven **103**",
+       "Max profit capped at **7**"
+      ]
+     },
+     {
+      "big": [
+       "Cheaper entry, capped upside.",
+       "Every spread is a **trade-off**."
+      ]
+     }
+    ]
+   }
   }
  ]
 }
