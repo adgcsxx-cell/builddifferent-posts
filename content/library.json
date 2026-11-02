@@ -2343,7 +2343,30 @@
     "#thetadecay",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Option pricing · Part 1",
+    "hook": "An option loses value **every day**, and fastest in its final week.",
+    "chart_slide": 2,
+    "scenes": [
+     {
+      "kicker": "Time value left, simplified model",
+      "lines": [
+       "30 days to expiry: **100%**",
+       "15 days left: **71%**",
+       "7 days left: **48%**"
+      ]
+     },
+     {
+      "big": [
+       "The final week takes about **half** the value."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "25-implied-volatility",
+    "next_title": "Why the same option can cost twice as much"
+   }
   },
   {
    "id": "13-revenge-trading",
@@ -2396,7 +2419,31 @@
     "#tradingdiscipline",
     "#riskmanagement",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Trading psychology · Part 1",
+    "hook": "The most expensive trade is the one you take to **win it back**.",
+    "scenes": [
+     {
+      "kicker": "The revenge loop",
+      "lines": [
+       "A loss hits",
+       "Urge to **win it back**",
+       "Bigger size, weaker setup",
+       "**Bigger loss.** Repeat."
+      ]
+     },
+     {
+      "big": [
+       "After a loss, trade **well**,",
+       "not to get even."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "20-fomo",
+    "next_title": "Why the trade you missed cost you nothing"
+   }
   },
   {
    "id": "14-expectancy",
@@ -4767,7 +4814,29 @@
     "#tradingdiscipline",
     "#tradingmindset",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Trading psychology · Part 2",
+    "hook": "The trade you **missed** cost you exactly **₹0**.",
+    "scenes": [
+     {
+      "kicker": "When you chase a move",
+      "lines": [
+       "You enter late, far from a stop",
+       "The move pauses or reverses",
+       "You exit at a **real loss**"
+      ]
+     },
+     {
+      "big": [
+       "Missing a move is free.",
+       "**Chasing one is not.**"
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "13-revenge-trading"
+   }
   },
   {
    "id": "21-hedged-vs-naked",
@@ -5815,7 +5884,30 @@
     "#optionsbasics",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Option pricing · Part 2",
+    "hook": "Why the same option can cost **twice as much** on a different day.",
+    "chart_slide": 2,
+    "scenes": [
+     {
+      "kicker": "ATM call, 30 days, Black-Scholes",
+      "lines": [
+       "IV 15%: premium **1.72**",
+       "IV 30%: premium **3.43**",
+       "Double the IV, ~double the price"
+      ]
+     },
+     {
+      "big": [
+       "After big events IV often drops,",
+       "and premiums **fall** with it."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "12-time-decay"
+   }
   },
   {
    "id": "26-stop-placement",
