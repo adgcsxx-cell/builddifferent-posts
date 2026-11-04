@@ -1,0 +1,22 @@
+Profit factor is one of the simplest backtest numbers: gross profit ÷ gross loss.
+
+Example: 100 trades, 45 winners averaging ₹1,500 and 55 losers averaging ₹1,000.
+→ Gross profit: ₹67,500
+→ Gross loss: ₹55,000
+→ Profit factor: 1.23
+
+Above 1, the system makes money. Below 1, it loses.
+
+Now add ₹100 of costs to every trade. Winners shrink to ₹1,400, losers grow to ₹1,100, and the profit factor drops to 1.04. Almost nothing left.
+
+So always read it after costs, with enough trades, and next to the drawdown.
+
+(Illustrative math, not real results.)
+
+Do you check profit factor in your backtests?
+
+Free position-sizing worksheet + every lesson on Telegram: t.me/builddifferenttrading
+
+Education only, not investment advice. Not SEBI-registered.
+
+#backtesting #systematictrading #tradingsystem #algotrading #tradingeducation
