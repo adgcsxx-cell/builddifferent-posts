@@ -100,5 +100,11 @@
   "date": "2026-11-03",
   "file": "reels/2026-11-03-12-time-decay.mp4",
   "result": "media id 18140656105541120 (short format, part 1 of a pair; published on first 'still processing' retry)"
+ },
+ {
+  "id": "25-implied-volatility",
+  "date": "2026-11-12",
+  "file": "reels/2026-11-12-25-implied-volatility.mp4",
+  "result": "media id 18156012055527481 (short format, part 2 of 12-time-decay; published on first 'still processing' retry)"
  }
 ]
