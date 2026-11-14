@@ -6902,7 +6902,33 @@
     "#positionsizing",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Leverage · Part 1",
+    "hook": "At **10x** leverage, a **10%** move against you wipes out your whole margin.",
+    "chart_slide": 4,
+    "chart_kicker": "The math",
+    "scenes": [
+     {
+      "kicker": "A 4% move against you costs",
+      "lines": [
+       "1x: **4%** of your margin",
+       "5x: **20%** of your margin",
+       "10x: **40%** of your margin",
+       "20x: **80%** of your margin"
+      ]
+     },
+     {
+      "big": [
+       "Leverage doesn't improve a setup.",
+       "It makes **every** result bigger."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "40-correlated-positions",
+    "next_title": "The hidden leverage in five 'safe' trades"
+   }
   },
   {
    "id": "36-profit-factor",
@@ -7319,7 +7345,31 @@
     "#tradingrules",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Leverage · Part 2",
+    "hook": "Five trades at **1%** risk can be **one 5% bet**.",
+    "chart_slide": 2,
+    "chart_kicker": "If the 5 trades are independent",
+    "scenes": [
+     {
+      "kicker": "Chance all 5 stops get hit",
+      "lines": [
+       "Independent trades: about **3%**",
+       "Moving together: **50%**",
+       "Same trades, same 1% risk each"
+      ]
+     },
+     {
+      "big": [
+       "Your risk isn't per trade.",
+       "It's per **idea**."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "35-leverage-math"
+   }
   },
   {
    "id": "41-trend-vs-mean-reversion",
