@@ -4212,7 +4212,29 @@
     "#sensex",
     "#investingbasics",
     "#tradingeducation"
-   ]
+   ],
+   "reel": {
+    "kicker": "Market basics · Part 1",
+    "hook": "What the **Nifty 50** actually measures.",
+    "scenes": [
+     {
+      "kicker": "An index is a basket",
+      "lines": [
+       "**50** large companies on the NSE",
+       "Turned into a single number",
+       "Bigger companies count **more**"
+      ]
+     },
+     {
+      "big": [
+       "A few big stocks can move **the whole index**."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "24-corrections-bear-markets",
+    "next_title": "Correction, bear market or crash"
+   }
   },
   {
    "id": "17-put-option-payoff",
@@ -5728,7 +5750,32 @@
     "#investingbasics",
     "#riskmanagement",
     "#nifty50"
-   ]
+   ],
+   "reel": {
+    "kicker": "Market basics · Part 2",
+    "hook": "Correction, bear market, crash: what's the **difference**?",
+    "chart_slide": 2,
+    "chart_kicker": "Measured from the last peak",
+    "scenes": [
+     {
+      "kicker": "Common conventions",
+      "lines": [
+       "Pullback: up to about **10%**",
+       "Correction: **10% to 20%**",
+       "Bear market: **20% or more**",
+       "Crash: very sharp, in days/weeks"
+      ]
+     },
+     {
+      "big": [
+       "Write your rules for a fall",
+       "**before** one arrives."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "16-what-is-an-index"
+   }
   },
   {
    "id": "25-implied-volatility",
