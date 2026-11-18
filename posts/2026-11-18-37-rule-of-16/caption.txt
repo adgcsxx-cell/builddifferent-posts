@@ -1,0 +1,22 @@
+Implied volatility is quoted as a yearly number. That makes it hard to feel. The rule of 16 fixes that.
+
+Divide IV by 16 to get the typical daily move the market is pricing in. Why 16? There are about 252 trading days in a year, and the square root of 252 is about 15.9.
+
+→ IV 16%: about 1% a day
+→ IV 32%: about 2% a day
+→ One week at IV 16%: about 2.3%
+→ One month at IV 16%: about 4.6%
+
+Example: an index at 20,000 with IV of 16% is pricing a typical day of about 200 points.
+
+Two warnings: it's one standard deviation, so bigger days still happen (markets have fat tails), and it says nothing about direction.
+
+(Illustrative math, not a forecast.)
+
+Did you know this shortcut?
+
+Free position-sizing worksheet + every lesson on Telegram: t.me/builddifferenttrading
+
+Education only, not investment advice. Not SEBI-registered.
+
+#impliedvolatility #optionstrading #optionsbasics #tradingeducation #stockmarketindia

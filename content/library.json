@@ -7894,6 +7894,108 @@
      }
     ]
    }
+  },
+  {
+   "id": "43-averaging-down",
+   "pillar": "Psychology",
+   "label": "Lesson 43 · Psychology",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Trading psychology",
+     "title": "Averaging down turned a **1%** risk into a **7%** loss.",
+     "sub": "Same stock, same fall. The only difference: not taking the stop."
+    },
+    {
+     "type": "chart",
+     "title": "Each 'bargain' made the loss bigger",
+     "body": "Loss as a share of a ₹1,00,000 account: taking the planned stop vs averaging down.",
+     "chart": {
+      "kind": "bar",
+      "title": "Loss, % of account",
+      "categories": [
+       "Stop at ₹180",
+       "Avg down, ₹160",
+       "At ₹140",
+       "At ₹120"
+      ],
+      "values": [
+       1,
+       3,
+       7,
+       11
+      ],
+      "value_format": "{:.0f}%",
+      "highlight": [
+       2
+      ],
+      "x_label": "Where the price is",
+      "label_all": true
+     },
+     "note": "Math: hypothetical stock and account, not real prices or results."
+    },
+    {
+     "type": "text",
+     "title": "How it happened",
+     "body": "- Plan: 50 shares at ₹200, stop at ₹180. Risk: ₹1,000, or 1%.\n- At ₹180, skip the stop and buy 50 more.\n- At ₹160, buy 100 more: 200 shares, average ₹175.\n- At ₹140, the open loss is **₹7,000**.",
+     "callout": "Each buy felt like a bargain. Together they were one big bet."
+    },
+    {
+     "type": "stat",
+     "value": "+25%",
+     "label": "rise needed from ₹140 just to get back to the ₹175 average.",
+     "body": "The planned stop cost 1%, and a gain of about 1% would have won it back."
+    },
+    {
+     "type": "text",
+     "title": "Why we do it",
+     "body": "Taking the stop means admitting the idea was wrong. Averaging down puts that off, and a lower average price feels like progress.\nBut the market doesn't know your average price. A better question: with no position at all, would you open this size today?",
+     "callout": "Your average price matters to you. The market ignores it."
+    },
+    {
+     "type": "checklist",
+     "title": "Before adding to a losing position",
+     "items": [
+      "Was adding written into the plan before the entry?",
+      "Is the total risk still within your limit?",
+      "Has the stop moved? If so, why?",
+      "With no position, would you open this full size today?"
+     ]
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "Averaging down feels like getting a discount. Often it's just a bigger bet on an idea that's already failing.\n\nA hypothetical example on a ₹1,00,000 account: buy 50 shares at ₹200 with a stop at ₹180. Planned risk: ₹1,000, or 1%.\n\nInstead of taking the stop, buy 50 more at ₹180 and 100 more at ₹160. Now it's 200 shares at an average of ₹175, with ₹35,000 tied up. At ₹140 the open loss is ₹7,000 (7%), and the price needs +25% just to get back to the average.\n\nThe stop was the plan. Averaging down quietly cancelled it, because taking a loss means admitting you were wrong.\n\n(Hypothetical numbers, not real prices or results.)\n\nHave you ever averaged down to avoid taking a stop?",
+   "hashtags": [
+    "#tradingpsychology",
+    "#riskmanagement",
+    "#tradingdiscipline",
+    "#tradingeducation",
+    "#stockmarketindia"
+   ],
+   "reel": {
+    "kicker": "Trading psychology",
+    "hook": "Averaging down turned a **1%** risk into a **7%** loss.",
+    "chart_slide": 2,
+    "chart_kicker": "Loss, % of account",
+    "scenes": [
+     {
+      "lines": [
+       "Planned risk: **₹1,000** (1%)",
+       "Bought more at ₹180 and ₹160",
+       "200 shares, average ₹175",
+       "At ₹140, the loss is **₹7,000**"
+      ]
+     },
+     {
+      "big": [
+       "The stop was the plan.",
+       "Averaging down **cancelled** it."
+      ]
+     }
+    ]
+   }
   }
  ]
 }
