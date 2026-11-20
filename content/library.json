@@ -5155,7 +5155,30 @@
     "#hedging",
     "#riskmanagement",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Option selling",
+    "hook": "Selling options without a hedge means **unlimited** risk.",
+    "chart_slide": 2,
+    "chart_kicker": "Illustrative prices",
+    "scenes": [
+     {
+      "kicker": "Naked vs hedged",
+      "lines": [
+       "Sell 100 call + put: collect **8**",
+       "Naked max loss: **no floor**",
+       "Buy 90 put + 110 call for 2",
+       "Hedged max loss: capped at **4**"
+      ]
+     },
+     {
+      "big": [
+       "Give up a little premium.",
+       "Get a **known** worst case."
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "22-position-size-formula",
@@ -6359,7 +6382,28 @@
     "#optionbuying",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Options basics",
+    "hook": "Option buyers and sellers are paid for **different** things.",
+    "scenes": [
+     {
+      "kicker": "Two sides of every option",
+      "lines": [
+       "Buyer: max loss = premium paid",
+       "Buyer: wins less often",
+       "Seller: max gain = premium",
+       "Seller: one big move **hurts**"
+      ]
+     },
+     {
+      "big": [
+       "Neither side wins by default.",
+       "The edge is **sizing** and risk control."
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "29-drawdown-vs-risk",
