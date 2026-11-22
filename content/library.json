@@ -7213,7 +7213,7 @@
     {
      "type": "text",
      "title": "What a hot streak does to you",
-     "body": "- You feel you've figured the market out.\n- You size up right when the luck is likely to even out.\n- A normal losing run then lands on your biggest positions.",
+     "body": "- You feel you've figured the market out.\n- You size up, but the odds of the next trade haven't changed.\n- A normal losing run then lands on your biggest positions.",
      "callout": "Size up because of data, not a feeling."
     },
     {
@@ -8036,6 +8036,234 @@
       "big": [
        "The stop was the plan.",
        "Averaging down **cancelled** it."
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "44-fee-drag",
+   "pillar": "Fundamentals",
+   "label": "Lesson 44 · Fundamentals",
+   "slides": [
+    {
+     "type": "cover",
+     "kicker": "Costs and compounding",
+     "title": "A **1%** yearly fee can take about **20%** of your money over 25 years.",
+     "sub": "Small yearly costs compound too, just in the wrong direction."
+    },
+    {
+     "type": "chart",
+     "title": "Same start, one small difference",
+     "body": "₹1,00,000 for 25 years: an assumed 10% a year before fees, and 9% after a 1% yearly fee.",
+     "chart": {
+      "kind": "line",
+      "title": "Value of ₹1,00,000 (₹ thousand)",
+      "x": [
+       0,
+       1,
+       2,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       10,
+       11,
+       12,
+       13,
+       14,
+       15,
+       16,
+       17,
+       18,
+       19,
+       20,
+       21,
+       22,
+       23,
+       24,
+       25
+      ],
+      "series": [
+       {
+        "name": "10% a year, no fee",
+        "values": [
+         100.0,
+         110.0,
+         121.0,
+         133.1,
+         146.4,
+         161.1,
+         177.2,
+         194.9,
+         214.4,
+         235.8,
+         259.4,
+         285.3,
+         313.8,
+         345.2,
+         379.7,
+         417.7,
+         459.5,
+         505.4,
+         556.0,
+         611.6,
+         672.7,
+         740.0,
+         814.0,
+         895.4,
+         985.0,
+         1083.5
+        ]
+       },
+       {
+        "name": "9% a year, after 1% fee",
+        "values": [
+         100.0,
+         109.0,
+         118.8,
+         129.5,
+         141.2,
+         153.9,
+         167.7,
+         182.8,
+         199.3,
+         217.2,
+         236.7,
+         258.0,
+         281.3,
+         306.6,
+         334.2,
+         364.2,
+         397.0,
+         432.8,
+         471.7,
+         514.2,
+         560.4,
+         610.9,
+         665.9,
+         725.8,
+         791.1,
+         862.3
+        ],
+        "focus": true
+       }
+      ],
+      "y_format": "{:.0f}",
+      "x_label": "Years",
+      "x_ticks": [
+       0,
+       5,
+       10,
+       15,
+       20,
+       25
+      ],
+      "area": false,
+      "points": [
+       {
+        "series": 0,
+        "x": 25,
+        "label": "₹10.83L",
+        "dx": -150,
+        "dy": -10
+       },
+       {
+        "series": 1,
+        "x": 25,
+        "label": "₹8.62L",
+        "dx": -150,
+        "dy": 40
+       }
+      ]
+     },
+     "note": "Illustrative math with assumed rates, not market data or a forecast."
+    },
+    {
+     "type": "stat",
+     "kicker": "The gap after 25 years",
+     "value": "₹2.21L",
+     "label": "less, from a fee that looked like just 1% a year.",
+     "body": "That's about **20%** of the final value, and about **22%** of all the growth."
+    },
+    {
+     "type": "chart",
+     "title": "Bigger fee, bigger bite",
+     "body": "Share of the final value lost after 25 years, against the same 10% assumed return.",
+     "chart": {
+      "kind": "bar",
+      "title": "Lost to fees after 25 years",
+      "categories": [
+       "0.25%",
+       "0.5%",
+       "1%",
+       "1.5%",
+       "2%"
+      ],
+      "values": [
+       5.5,
+       10.8,
+       20.4,
+       29.1,
+       36.8
+      ],
+      "value_format": "{:.0f}%",
+      "highlight": [
+       2
+      ],
+      "x_label": "Yearly fee",
+      "label_all": true
+     },
+     "note": "Math: assumed 10% yearly return before fees, not real data."
+    },
+    {
+     "type": "text",
+     "title": "Why small fees feel harmless",
+     "body": "1% sounds tiny next to a 10% return. But the fee is charged every year on the whole balance, including last year's growth.\nThe money paid out also stops compounding for you. Over decades, that lost growth is bigger than the fees themselves.",
+     "callout": "Compare costs over the full holding period, not one year."
+    },
+    {
+     "type": "checklist",
+     "title": "Before you pay a yearly cost",
+     "items": [
+      "What is the total yearly cost, all charges included?",
+      "What is it in rupees over 10 or 20 years?",
+      "Is there a lower-cost way to get the same thing?",
+      "Does what you get justify the cost every single year?"
+     ]
+    },
+    {
+     "type": "cta"
+    }
+   ],
+   "caption": "A 1% yearly fee sounds small. Over 25 years it isn't.\n\nA hypothetical example: ₹1,00,000 growing at an assumed 10% a year becomes about ₹10,83,471 in 25 years. Take a 1% fee every year and it grows at about 9% instead, ending near ₹8,62,308.\n\nThe gap is about ₹2,21,163. That's roughly 20% of the final value, from a fee that looked like 1%.\n\nWhy? The fee is charged on the whole balance every year, and the money paid out stops compounding for you.\n\nAt 0.5% the bite is about 11%. At 2% it's about 37%.\n\n(Assumed rates for the math, not a forecast or a recommendation of any product.)\n\nDo you know the total yearly cost of what you hold? Save this for later.",
+   "hashtags": [
+    "#compounding",
+    "#personalfinance",
+    "#financialliteracy",
+    "#investingbasics",
+    "#tradingeducation"
+   ],
+   "reel": {
+    "kicker": "Money math",
+    "hook": "A **1%** yearly fee can take about **20%** of your money over 25 years.",
+    "chart_slide": 2,
+    "chart_kicker": "₹1 lakh over 25 years",
+    "scenes": [
+     {
+      "lines": [
+       "₹1 lakh at 10%: **₹10.83 lakh**",
+       "Same at 9% after fee: **₹8.62 lakh**",
+       "Gap: about **₹2.21 lakh**"
+      ]
+     },
+     {
+      "big": [
+       "Small fees compound too.",
+       "Check the **rupee** cost, not the %."
       ]
      }
     ]
