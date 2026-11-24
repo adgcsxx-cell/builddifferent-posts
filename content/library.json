@@ -5286,7 +5286,26 @@
     "#quanttrading",
     "#systematictrading",
     "#tradingeducation"
-   ]
+   ],
+   "reel": {
+    "kicker": "Backtesting traps",
+    "hook": "Two silent bugs that make backtests look **better** than reality.",
+    "scenes": [
+     {
+      "kicker": "Two silent bugs",
+      "lines": [
+       "**Look-ahead:** uses future data",
+       "**Survivorship:** drops failed stocks"
+      ]
+     },
+     {
+      "big": [
+       "If you couldn't have known it then,",
+       "your test **can't** use it."
+      ]
+     }
+    ]
+   }
   },
   {
    "id": "24-corrections-bear-markets",
