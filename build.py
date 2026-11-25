@@ -260,14 +260,19 @@ def reel_candidate(today, reels, posted, lib, want_id=None):
             for mid in memes_by_id(approved_only=True):
                 if mid not in have and memes[mid].get("lesson") in lib:
                     return mid
+    def early_part2(lid):
+        # never air a part 2 before its part 1 (that breaks part 1's "Part 2 is next" promise)
+        prev = lib.get(lid, {}).get("reel", {}).get("prev")
+        return lib.get(lid, {}).get("reel", {}).get("part") == 2 and prev in lib and prev not in have
     for p in posted:
-        if p.get("dir") not in (None, "", "manual") and p["date"] < today and p["id"] not in have:
+        if p.get("dir") not in (None, "", "manual") and p["date"] < today and p["id"] not in have \
+                and not early_part2(p["id"]):
             return p["id"]
     # 5. Reels now run more often than carousels: fall back to the earliest library lesson
     #    (not yet a carousel) that has a reel script and no Reel yet.
     done = {p["id"] for p in posted}
     for lid, post in lib.items():
-        if lid not in have and lid not in done and post.get("reel"):
+        if lid not in have and lid not in done and post.get("reel") and not early_part2(lid):
             return lid
     return None
 

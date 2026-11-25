@@ -6578,7 +6578,31 @@
     "#tradingpsychology",
     "#systematictrading",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Trading journal · Part 1",
+    "hook": "If you don't **write it down**, you can't improve it.",
+    "scenes": [
+     {
+      "kicker": "Log every trade",
+      "lines": [
+       "Planned entry, stop and target",
+       "Size and rupee risk",
+       "Result in rupees and in **R**",
+       "Did I follow my rules?"
+      ]
+     },
+     {
+      "big": [
+       "A backtest tests your strategy.",
+       "A journal tests **you**."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "36-profit-factor",
+    "next_title": "One number that shows if your wins outweigh your losses"
+   }
   },
   {
    "id": "31-option-greeks",
@@ -7114,7 +7138,31 @@
     "#tradingsystem",
     "#algotrading",
     "#tradingeducation"
-   ]
+   ],
+   "reel": {
+    "kicker": "Backtest metrics · Part 2",
+    "hook": "Profit factor **1.5** means every ₹1 lost brought back **₹1.50**.",
+    "chart_slide": 3,
+    "chart_kicker": "Profit factor by win rate",
+    "scenes": [
+     {
+      "kicker": "Example: 100 trades",
+      "lines": [
+       "45 wins avg ₹1,500: **₹67,500**",
+       "55 losses avg ₹1,000: **₹55,000**",
+       "Profit factor: **1.23**",
+       "With ₹100 costs each: **1.04**"
+      ]
+     },
+     {
+      "big": [
+       "Always read it **after costs**."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "30-trading-journal"
+   }
   },
   {
    "id": "37-rule-of-16",
