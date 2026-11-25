@@ -1,0 +1,17 @@
+Want to know how fast something doubles? Divide 72 by the yearly rate.
+
+At 6% a year: 72 ÷ 6 = 12 years. The exact answer is 11.9 years. At 8%: about 9 years. At 12%: about 6.
+
+It works for anything that compounds, including the things working against you. At 6% inflation, prices double in about 12 years, so ₹1,00,000 then buys what about ₹49,700 buys today.
+
+Use it as a quick sense check: on inflation, on fees, and on any return that sounds too good to be true.
+
+(Rates here are assumptions for the math, not forecasts or recommendations.)
+
+Did you know this shortcut? Save it for later.
+
+Free position-sizing worksheet + every lesson on Telegram: t.me/builddifferenttrading
+
+Education only, not investment advice. Not SEBI-registered.
+
+#compounding #inflation #financialliteracy #personalfinance #tradingeducation
