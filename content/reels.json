@@ -166,5 +166,11 @@
   "date": "2026-11-25",
   "file": "reels/2026-11-25-26-stop-placement.mp4",
   "result": "media id 17992080591087699"
+ },
+ {
+  "id": "28-buyer-vs-seller",
+  "date": "2026-11-26",
+  "file": "reels/2026-11-26-28-buyer-vs-seller.mp4",
+  "result": "media id 18509185576102005 (published on first 'still processing' retry)"
  }
 ]
