@@ -6651,7 +6651,30 @@
     "#optionsbasics",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Options basics · Part 1",
+    "hook": "Why your call can **lose money** even when the market goes **up**.",
+    "scenes": [
+     {
+      "kicker": "Call: delta 0.50, theta −2, vega 1.5",
+      "lines": [
+       "Underlying up 10: **+5**",
+       "One day passes: **−2**",
+       "IV up 2 points: **+3**",
+       "Net: roughly the **sum**"
+      ]
+     },
+     {
+      "big": [
+       "Theta and a drop in IV can **eat** a price gain."
+      ]
+     }
+    ],
+    "part": 1,
+    "next": "37-rule-of-16",
+    "next_title": "How to read implied volatility"
+   }
   },
   {
    "id": "32-pre-trade-checklist",
@@ -7235,7 +7258,31 @@
     "#optionsbasics",
     "#tradingeducation",
     "#stockmarketindia"
-   ]
+   ],
+   "reel": {
+    "kicker": "Options math · Part 2",
+    "hook": "Divide IV by **16** to get the market's expected **daily** move.",
+    "chart_slide": 3,
+    "chart_kicker": "Expected daily move by IV",
+    "scenes": [
+     {
+      "kicker": "At an IV of 16%",
+      "lines": [
+       "1 day: about **1.0%**",
+       "1 week: about **2.3%**",
+       "1 month: about **4.6%**"
+      ]
+     },
+     {
+      "big": [
+       "IV tells you **how much**,",
+       "never **which way**."
+      ]
+     }
+    ],
+    "part": 2,
+    "prev": "31-option-greeks"
+   }
   },
   {
    "id": "38-winning-streaks",
